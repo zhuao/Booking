@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Android">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Android/libs/gson-1.7.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Android/libs/androlog-1.0.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Android/libs/android-async-http-1.4.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

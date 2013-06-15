@@ -1,0 +1,57 @@
+# view AndroidManifest.xml #generated:9
+-keep class com.thoughtworks.ieat.IEatApplication { <init>(...); }
+
+# view AndroidManifest.xml #generated:31
+-keep class com.thoughtworks.ieat.activity.BillActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:27
+-keep class com.thoughtworks.ieat.activity.GroupAnalysisActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:25
+-keep class com.thoughtworks.ieat.activity.GroupCreateActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:26
+-keep class com.thoughtworks.ieat.activity.GroupInfoActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:23
+-keep class com.thoughtworks.ieat.activity.GroupListActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:29
+-keep class com.thoughtworks.ieat.activity.GroupMemberActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:28
+-keep class com.thoughtworks.ieat.activity.GroupMyselfActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:24
+-keep class com.thoughtworks.ieat.activity.GroupTabActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:13
+-keep class com.thoughtworks.ieat.activity.LoginActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:30
+-keep class com.thoughtworks.ieat.activity.OrderCreateActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:32
+-keep class com.thoughtworks.ieat.activity.PayBackActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:22
+-keep class com.thoughtworks.ieat.activity.RegisterActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:33
+-keep class com.thoughtworks.ieat.activity.UnpaidOrderActivity { <init>(...); }
+
+# view res/layout/group_myself.xml #generated:24
+-keep class com.thoughtworks.ieat.view.OrderView { <init>(...); }
+
+# onClick res/layout/group_list.xml #generated:10
+-keepclassmembers class * { *** createGroup(...); }
+
+# onClick res/layout/login.xml #generated:33
+-keepclassmembers class * { *** goToRegister(...); }
+
+# onClick res/layout/login.xml #generated:25
+-keepclassmembers class * { *** login(...); }
+
+# onClick res/layout/register.xml #generated:54
+-keepclassmembers class * { *** register(...); }
+
