@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayoutPreviewToolWindow">
+    <option name="state">
+      <GlobalState />
+    </option>
+  </component>
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="718c5d70-671d-4d6e-a612-70cebe021b84" name="Default" comment="" />
     <ignored path="AndroidStructure.iws" />
@@ -64,19 +74,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Android/build.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="51" selection-start="3649" selection-end="3649" vertical-scroll-proportion="0.87851316" vertical-offset="836" max-vertical-offset="3800">
+            <state line="166" column="51" selection-start="5994" selection-end="6006" vertical-scroll-proportion="-21.846153" vertical-offset="2586" max-vertical-offset="3800">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="SpinnerActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Android/src/main/java/com/tw/sketch/spinner/SpinnerActivity.java">
+        <entry file="file://$PROJECT_DIR$/Android/src/main/java/com/tw/sketch/activity/SpinnerActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="24" selection-start="3271" selection-end="3271" vertical-scroll-proportion="0.0" vertical-offset="550" max-vertical-offset="6707">
+            <state line="99" column="24" selection-start="3272" selection-end="3272" vertical-scroll-proportion="0.0" vertical-offset="930" max-vertical-offset="6707">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -84,12 +94,49 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Android/src/main/java/com/tw/sketch/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="21" column="20" selection-start="573" selection-end="577" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="589">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EditTextActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Android/src/main/java/com/tw/sketch/activity/EditTextActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="5" selection-start="533" selection-end="533" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="494">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit_text.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Android/res/layout/edit_text.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="45" selection-start="370" selection-end="387" vertical-scroll-proportion="-4.9259257" vertical-offset="0" max-vertical-offset="380">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Android/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="24" selection-start="1150" selection-end="1163" vertical-scroll-proportion="0.0" vertical-offset="37" max-vertical-offset="1178">
+            <state line="32" column="38" selection-start="1357" selection-end="1358" vertical-scroll-proportion="0.3970988" vertical-offset="170" max-vertical-offset="1273">
               <folding>
-                <element signature="e#1695#1713#0" expanded="true" />
+                <element signature="e#1500#1518#0" expanded="true" />
+                <element signature="e#1733#1751#0" expanded="true" />
+                <element signature="e#2183#2201#0" expanded="true" />
+                <element signature="e#2309#2327#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -118,10 +165,17 @@
         <option value="$PROJECT_DIR$/Android/src/main/java/com/thoughtworks/ieat/utils/ApplicationData.java" />
         <option value="$PROJECT_DIR$/Android/src/main/java/com/thoughtworks/ieat/IEatApplication.java" />
         <option value="$PROJECT_DIR$/Android/res/raw/app_config.properties" />
-        <option value="$PROJECT_DIR$/Android/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/Android/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/Android/src/main/java/com/tw/sketch/spinner/SpinnerActivity.java" />
+        <option value="$PROJECT_DIR$/Android/src/main/java/com/tw/sketch/spinner/MainActivity.java" />
+        <option value="$PROJECT_DIR$/Android/src/main/java/com/tw/sketch/MainActivity.java" />
+        <option value="$PROJECT_DIR$/Android/src/main/java/com/tw/sketch/EditTextActivit.java" />
+        <option value="$PROJECT_DIR$/Android/res/layout/function_lists.xml" />
+        <option value="$PROJECT_DIR$/Android/src/main/java/com/tw/sketch/activity/EditTextActivit.java" />
+        <option value="$PROJECT_DIR$/Android/res/layout/edit_text.xml" />
+        <option value="$PROJECT_DIR$/Android/src/main/java/com/tw/sketch/activity/EditTextActivity.java" />
         <option value="$PROJECT_DIR$/Android/build.xml" />
+        <option value="$PROJECT_DIR$/Android/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -207,7 +261,37 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="spinner" />
+              <option name="myItemId" value="sketch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidSketch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sketch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="activity" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -237,9 +321,16 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
     <property name="LayoutCode.rearrangeEntriesJava" value="false" />
+    <property name="OverrideImplement.combined" value="true" />
+    <property name="OverrideImplement.overriding.sorted" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.tw.sketch" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.tw.sketch.activity" />
+      <recent name="com.tw.sketch" />
       <recent name="com.tw.sketch.spinner" />
     </key>
   </component>
@@ -416,6 +507,7 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296875" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32979664" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -516,28 +608,69 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Android/src/main/java/com/tw/sketch/spinner/SpinnerActivity.java">
+    <entry file="file://$PROJECT_DIR$/Android/src/main/java/com/tw/sketch/activity/SpinnerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="24" selection-start="3271" selection-end="3271" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6707">
+        <state line="99" column="24" selection-start="3272" selection-end="3272" vertical-scroll-proportion="0.0" vertical-offset="930" max-vertical-offset="6707">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Android/AndroidManifest.xml">
+    <entry file="file://$PROJECT_DIR$/Android/src/main/java/com/tw/sketch/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="24" selection-start="1150" selection-end="1163" vertical-scroll-proportion="0.0" vertical-offset="37" max-vertical-offset="1178">
+        <state line="21" column="20" selection-start="573" selection-end="577" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="589">
           <folding>
-            <element signature="e#1695#1713#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Android/res/layout/function_lists.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="33" selection-start="586" selection-end="586" vertical-scroll-proportion="0.21652421" vertical-offset="0" max-vertical-offset="1053">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Android/res/layout/edit_text.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="45" selection-start="370" selection-end="387" vertical-scroll-proportion="-4.9259257" vertical-offset="0" max-vertical-offset="380">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Android/src/main/java/com/tw/sketch/activity/EditTextActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="5" selection-start="533" selection-end="533" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="494">
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Android/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="51" selection-start="3649" selection-end="3649" vertical-scroll-proportion="0.87851316" vertical-offset="836" max-vertical-offset="3800">
+        <state line="166" column="51" selection-start="5994" selection-end="6006" vertical-scroll-proportion="-21.846153" vertical-offset="2586" max-vertical-offset="3800">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Android/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="38" selection-start="1357" selection-end="1358" vertical-scroll-proportion="0.3970988" vertical-offset="170" max-vertical-offset="1273">
+          <folding>
+            <element signature="e#1500#1518#0" expanded="true" />
+            <element signature="e#1733#1751#0" expanded="true" />
+            <element signature="e#2183#2201#0" expanded="true" />
+            <element signature="e#2309#2327#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

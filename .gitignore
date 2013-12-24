@@ -1,4 +1,4 @@
-dea/
+.idea/
 .sonar/
 **/*.iml
 *.iml

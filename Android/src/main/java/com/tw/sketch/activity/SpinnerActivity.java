@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.tw.sketch.spinner;
+package com.tw.sketch.activity;
 
 import android.app.Activity;
 import android.content.Context;

@@ -164,7 +164,7 @@
             <arg value="am"/>
             <arg value="start"/>
             <arg value="-n"/>
-            <arg value="com.tw.sketch/.spinner.SpinnerActivity"/>
+            <arg value="com.tw.sketch/.MainActivity"/>
         </exec>
     </target>
 	
