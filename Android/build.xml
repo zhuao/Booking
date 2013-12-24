@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="iEat" >
+<project name="AndroidSketch" >
 
     <!-- The local.properties file is created and updated by the 'android' tool.
          It contains the path to the SDK. It should *NOT* be checked into
@@ -93,7 +93,7 @@
     <import file="${sdk.dir}/tools/ant/build.xml" />
 	
 	<!--  APK FILE NAME PREFIX-->
-	<property name="APK_NAME" value="iEat" />
+	<property name="APK_NAME" value="${project.name}" />
 	<property name="VERSION_NUMBER" value="1.0" />
 
 	<target name="printinfo">
@@ -153,7 +153,7 @@
     <target name="install" depends="build">
         <exec executable="${env.ANDROID_HOME}/platform-tools/adb">
             <arg value="uninstall"/>
-            <arg value="com.thoughtworks.ieat"/>
+            <arg value="com.tw.sketch"/>
         </exec>
         <exec executable="${env.ANDROID_HOME}/platform-tools/adb">
             <arg value="install"/>
@@ -164,12 +164,12 @@
             <arg value="am"/>
             <arg value="start"/>
             <arg value="-n"/>
-            <arg value="com.thoughtworks.ieat/.activity.LoginActivity"/>
+            <arg value="com.tw.sketch/.spinner.SpinnerActivity"/>
         </exec>
     </target>
 	
 
-	<target name="build-prodapp">
+	<target name="release">
 		<!-- For security, we DO NOT want an app_config.properties file in the RELESASE APK-->
 		<!-- remove app_config.properties file, file may exist from a previous build task-->
 		<delete file="${basedir}/res/raw/app_config.properties"/>
