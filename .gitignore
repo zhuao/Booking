@@ -7,4 +7,5 @@ out/
 tmp/
 bin/
 Android/gen/
+AutomatedTest/gen/
 target/
