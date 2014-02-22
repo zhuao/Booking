@@ -6,4 +6,5 @@ build/
 out/
 tmp/
 bin/
+Android/gen/
 target/
