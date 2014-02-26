@@ -5,9 +5,9 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <com.tw.sketch.audiorecorder.AudioRecordBtn android:layout_width="fill_parent"
-                                                android:layout_height="wrap_content"
-                                                android:id="@+id/record_btn"
-                                                android:text="Press and begin to record"/>
+    <Button android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/record_btn"
+            android:text="Press and begin to record"/>
 
 </LinearLayout>
