@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import com.tw.sketch.activity.AudioRecorderActivity;
 import com.tw.sketch.activity.EditTextActivity;
 import com.tw.sketch.activity.SpinnerActivity;
 
@@ -21,5 +22,9 @@ public class MainActivity extends Activity {
 
     public void text(View view) {
         startActivity(new Intent(this, EditTextActivity.class));
+    }
+
+    public void recorder(View view) {
+        startActivity(new Intent(this, AudioRecorderActivity.class));
     }
 }

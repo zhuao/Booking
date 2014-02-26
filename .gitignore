@@ -7,5 +7,6 @@ out/
 tmp/
 bin/
 Android/gen/
+Android/Android.iml
 AutomatedTest/gen/
 target/
