@@ -26,7 +26,9 @@ public class AudioRecorderService {
             mediaRecorder = new MediaRecorder();
             mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
             mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-            mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+            mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_WB);
+//            mediaRecorder.setAudioChannels(2);
+//            mediaRecorder.setAudioSamplingRate(2);
             mediaRecorder.setOutputFile(getTempAudioFile(context));
             mediaRecorder.prepare();
             mediaRecorder.start();
@@ -39,8 +41,8 @@ public class AudioRecorderService {
 
     public void stopRecording() {
         mediaRecorder.stop();
-        mediaRecorder.reset();
         mediaRecorder.release();
+        mediaRecorder = null;
     }
 
     public void release() {
