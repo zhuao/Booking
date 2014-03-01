@@ -10,6 +10,8 @@ import com.tw.sketch.activity.AudioRecorderActivity;
 
 public class RecorderButton extends Button {
 
+    private boolean recordStarting = false;
+
     public RecorderButton(Context context) {
         super(context);
         attachAudioRecorder();
@@ -26,25 +28,43 @@ public class RecorderButton extends Button {
     }
 
     private void attachAudioRecorder() {
-        setOnLongClickListener(new OnLongClickListener() {
+        setOnClickListener(new OnClickListener() {
             @Override
-            public boolean onLongClick(View v) {
-                Toast.makeText(getContext(), "started", Toast.LENGTH_SHORT).show();
-                AudioRecorderActivity.audioRecorderService.startRecording(getContext());
-                return false;
-            }
-        });
-
-        setOnTouchListener(new OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    Toast.makeText(getContext(), "stopped", Toast.LENGTH_SHORT).show();
-                    AudioRecorderActivity.audioFile = AudioRecorderActivity.audioRecorderService.stopRecording();
+            public void onClick(View v) {
+                if (!recordStarting) {
+                    Toast.makeText(getContext(), "started", Toast.LENGTH_SHORT).show();
+                    setText("Stop Record");
+                    AudioRecorderActivity.audioRecorderService.startRecording(getContext());
+                } else {
+                    setText("Start To Record");
+                    Toast.makeText(getContext(), "Stopped", Toast.LENGTH_SHORT).show();
+                    AudioRecorderActivity.audioRecorderService.stopRecording();
                 }
-                return false;
+                recordStarting = !recordStarting;
             }
         });
     }
+
+//    private void attachAudioRecorder() {
+//        setOnLongClickListener(new OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View v) {
+//                Toast.makeText(getContext(), "started", Toast.LENGTH_SHORT).show();
+//                AudioRecorderActivity.audioRecorderService.startRecording(getContext());
+//                return false;
+//            }
+//        });
+//
+//        setOnTouchListener(new OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//
+//                if (event.getAction() == MotionEvent.ACTION_UP) {
+//                    Toast.makeText(getContext(), "stopped", Toast.LENGTH_SHORT).show();
+//                    AudioRecorderActivity.audioFile = AudioRecorderActivity.audioRecorderService.stopRecording();
+//                }
+//                return false;
+//            }
+//        });
+//    }
 }
