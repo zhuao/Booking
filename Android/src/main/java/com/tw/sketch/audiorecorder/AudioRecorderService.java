@@ -15,13 +15,13 @@ public class AudioRecorderService {
 
     private MediaRecorder mediaRecorder = null;
     private static SimpleDateFormat AUDIO_FILE_TIME_STAMP = new SimpleDateFormat("yyyyMMddHHmmssS");
-    private Context context;
+    private String tempAudioFile;
 
-    public AudioRecorderService(Context context) {
-        this.context = context;
+    public AudioRecorderService() {
+
     }
 
-    public void startRecording() {
+    public void startRecording(Context context) {
         try {
             mediaRecorder = new MediaRecorder();
             mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
@@ -29,7 +29,8 @@ public class AudioRecorderService {
             mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_WB);
 //            mediaRecorder.setAudioChannels(2);
 //            mediaRecorder.setAudioSamplingRate(2);
-            mediaRecorder.setOutputFile(getTempAudioFile(context));
+            tempAudioFile = getTempAudioFile(context);
+            mediaRecorder.setOutputFile(tempAudioFile);
             mediaRecorder.prepare();
             mediaRecorder.start();
         } catch (IOException e) {
@@ -39,10 +40,12 @@ public class AudioRecorderService {
         }
     }
 
-    public void stopRecording() {
+    public File stopRecording() {
         mediaRecorder.stop();
         mediaRecorder.release();
         mediaRecorder = null;
+
+        return new File(tempAudioFile);
     }
 
     public void release() {
@@ -54,10 +57,10 @@ public class AudioRecorderService {
     }
 
     private String getTempAudioFile(Context context) throws IOException {
+        String audioDirectory = getAudioFolder(context);
+
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            String path = Environment.getExternalStorageDirectory().getAbsolutePath()
-                    + "/" + context.getResources().getString(R.string.app_name);
-            File projectFolder = new File(path);
+            File projectFolder = new File(audioDirectory);
             if (!projectFolder.exists()) {
                 projectFolder.mkdir();
             }
@@ -67,7 +70,19 @@ public class AudioRecorderService {
         throw new RuntimeException("External storage error");
     }
 
+    private String getAudioFolder(Context context) {
+        return Environment.getExternalStorageDirectory().getAbsolutePath()
+                + "/" + context.getResources().getString(R.string.app_name);
+    }
+
     private String buildAudioFileName() {
         return AUDIO_FILE_TIME_STAMP.format(new Date()) + ".3gp";
+    }
+
+    public void emptyFolder(Context context) {
+        File file = new File(getAudioFolder(context));
+        if (file.exists() && file.isDirectory()) {
+            file.deleteOnExit();
+        }
     }
 }
