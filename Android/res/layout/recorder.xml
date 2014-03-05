@@ -8,12 +8,12 @@
     <com.tw.sketch.audiorecorder.RecorderButton android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/record_btn"
-            android:text="Press and begin to record"/>
+            android:text="Click and begin to record"/>
 
     <com.tw.sketch.audiorecorder.PlayerButton android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/play_record_btn"
-            android:text="Play recorded audio"/>
+            android:text="Click and Play recorded audio"/>
 
     <Button android:layout_width="fill_parent"
             android:layout_height="wrap_content"
