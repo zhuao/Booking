@@ -3,9 +3,6 @@ package com.tw.sketch.audiorecorder;
 import android.content.Context;
 import android.media.MediaRecorder;
 import android.os.Environment;
-import android.widget.Toast;
-import com.tw.sketch.R;
-import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,6 +17,19 @@ public class AudioRecorderService {
 
     public AudioRecorderService() {
 
+    }
+
+    public static String buildAudioFileName() {
+        return AUDIO_FILE_TIME_STAMP.format(new Date()) + ".3gp";
+    }
+
+    public static String getTempAudioFile(Context context) {
+
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            File audioFolder = AudioFolderOperator.getAudioDirectory(context);
+            return audioFolder.getAbsolutePath() + "/" + buildAudioFileName();
+        }
+        throw new RuntimeException("External storage error");
     }
 
     public void startRecording(Context context) {
@@ -57,39 +67,4 @@ public class AudioRecorderService {
         }
     }
 
-    public void emptyFolder(Context context) {
-        File file = new File(getAudioFolder(context));
-        if (file.exists() && file.isDirectory()) {
-            try {
-                FileUtils.deleteDirectory(file);
-                Toast.makeText(context, "All audios is emptied.", Toast.LENGTH_SHORT).show();
-            } catch (IOException e) {
-
-            }
-        }
-    }
-
-    private String getTempAudioFile(Context context) throws IOException {
-
-        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            File audioFolder = new File(getAudioFolder(context));
-            FileUtils.forceMkdir(audioFolder);
-            return audioFolder.getAbsolutePath() + "/" + buildAudioFileName();
-        }
-        Toast.makeText(context, "SD card is not ready.", Toast.LENGTH_SHORT).show();
-        throw new RuntimeException("External storage error");
-    }
-
-    private String getAudioFolder(Context context) {
-        return getProjectFolder(context) + "/Audio";
-    }
-
-    private String getProjectFolder(Context context) {
-        return Environment.getExternalStorageDirectory().getAbsolutePath()
-                + "/" + context.getResources().getString(R.string.app_name);
-    }
-
-    private String buildAudioFileName() {
-        return AUDIO_FILE_TIME_STAMP.format(new Date()) + ".3gp";
-    }
 }

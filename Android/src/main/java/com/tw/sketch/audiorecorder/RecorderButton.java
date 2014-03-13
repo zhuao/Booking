@@ -2,15 +2,18 @@ package com.tw.sketch.audiorecorder;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 import com.tw.sketch.activity.AudioRecorderActivity;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class RecorderButton extends Button {
 
     private boolean recordStarting = false;
+    private List<OnClickListener> clickListeners = new LinkedList<OnClickListener>();
 
     public RecorderButton(Context context) {
         super(context);
@@ -28,21 +31,35 @@ public class RecorderButton extends Button {
     }
 
     private void attachAudioRecorder() {
+        clickListeners.add(new AudioRecordListener());
         setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!recordStarting) {
-                    Toast.makeText(getContext(), "started", Toast.LENGTH_SHORT).show();
-                    setText("Stop Record");
-                    AudioRecorderActivity.audioRecorderService.startRecording(getContext());
-                } else {
-                    setText("Start To Record");
-                    Toast.makeText(getContext(), "Stopped", Toast.LENGTH_SHORT).show();
-                    AudioRecorderActivity.audioRecorderService.stopRecording();
+                for (OnClickListener clickListener : clickListeners) {
+                    clickListener.onClick(v);
                 }
-                recordStarting = !recordStarting;
             }
         });
+    }
+
+    public void appendClickAction(OnClickListener onClickListener) {
+        this.clickListeners.add(onClickListener);
+    }
+
+    private class AudioRecordListener implements OnClickListener {
+        @Override
+        public void onClick(View v) {
+            if (!recordStarting) {
+                Toast.makeText(getContext(), "started", Toast.LENGTH_SHORT).show();
+                setText("Stop Record");
+                AudioRecorderActivity.audioRecorderService.startRecording(getContext());
+            } else {
+                setText("Start To Record");
+                Toast.makeText(getContext(), "Stopped", Toast.LENGTH_SHORT).show();
+                AudioRecorderActivity.audioRecorderService.stopRecording();
+            }
+            recordStarting = !recordStarting;
+        }
     }
 
 //    private void attachAudioRecorder() {
