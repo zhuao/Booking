@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-    <Button android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Spinner"
-            android:onClick="spinner"/>
-    <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
-            android:text="Input View"
-            android:onClick="text"/>
-    <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
-            android:text="Audio Recorder"
-            android:onClick="recorder"/>
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="spinner"
+        android:text="Spinner" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="text"
+        android:text="Input View" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="recorder"
+        android:text="Audio Recorder" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="moments"
+        android:text="Moments" />
 
 </LinearLayout>
