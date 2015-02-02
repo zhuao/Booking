@@ -10,6 +10,8 @@ out/
 tmp/
 bin/
 Android/gen/
+Android/apk/
 Android/Android.iml
 AutomatedTest/gen/
 target/
+Android/.DS_Store

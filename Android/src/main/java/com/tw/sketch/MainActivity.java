@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import com.tw.sketch.activity.AudioRecorderActivity;
 import com.tw.sketch.activity.EditTextActivity;
+import com.tw.sketch.activity.MomentsActivity;
 import com.tw.sketch.activity.SpinnerActivity;
 
 public class MainActivity extends Activity {
@@ -26,5 +27,9 @@ public class MainActivity extends Activity {
 
     public void recorder(View view) {
         startActivity(new Intent(this, AudioRecorderActivity.class));
+    }
+
+    public void moments(View view) {
+        startActivity(new Intent(this, MomentsActivity.class));
     }
 }
