@@ -1,4 +1,7 @@
 .idea/
+.DS_Store
+**/.DS_Store
+**/.gitignore
 .sonar/
 **/*.iml
 *.iml
