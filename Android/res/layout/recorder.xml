@@ -5,12 +5,14 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <com.tw.sketch.audiorecorder.RecorderButton android:layout_width="fill_parent"
+    <me.zhuao.android.sketch.audiorecorder.RecorderButton
+        android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/record_btn"
             android:text="Click and begin to record"/>
 
-    <com.tw.sketch.audiorecorder.PlayerButton android:layout_width="fill_parent"
+    <me.zhuao.android.sketch.audiorecorder.PlayerButton
+        android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/play_record_btn"
             android:text="Click and Play recorded audio"/>

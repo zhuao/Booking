@@ -1,13 +1,13 @@
-package com.tw.sketch;
+package me.zhuao.android.sketch;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import com.tw.sketch.activity.AudioRecorderActivity;
-import com.tw.sketch.activity.EditTextActivity;
-import com.tw.sketch.activity.MomentsActivity;
-import com.tw.sketch.activity.SpinnerActivity;
+import me.zhuao.android.sketch.activity.AudioRecorderActivity;
+import me.zhuao.android.sketch.activity.EditTextActivity;
+import me.zhuao.android.sketch.activity.MomentsActivity;
+import me.zhuao.android.sketch.activity.SpinnerActivity;
 
 public class MainActivity extends Activity {
 

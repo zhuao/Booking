@@ -1,9 +1,10 @@
-package com.tw.sketch.activity;
+package me.zhuao.android.sketch.activity;
 
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import com.tw.sketch.R;
+
+import me.zhuao.android.sketch.R;
 
 public class MomentsActivity extends Activity {
 

@@ -1,10 +1,12 @@
-package com.tw.sketch.activity;
+package me.zhuao.android.sketch.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import com.tw.sketch.R;
+
+import me.zhuao.android.sketch.R;
+
 
 public class EditTextActivity extends Activity {
     @Override

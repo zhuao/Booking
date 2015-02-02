@@ -1,13 +1,18 @@
-package com.tw.sketch.activity;
+package me.zhuao.android.sketch.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
-import com.tw.sketch.R;
-import com.tw.sketch.audiorecorder.*;
 
 import java.io.File;
+
+import me.zhuao.android.sketch.R;
+import me.zhuao.android.sketch.audiorecorder.AudioAdapter;
+import me.zhuao.android.sketch.audiorecorder.AudioFolderOperator;
+import me.zhuao.android.sketch.audiorecorder.AudioPlayerService;
+import me.zhuao.android.sketch.audiorecorder.AudioRecorderService;
+import me.zhuao.android.sketch.audiorecorder.RecorderButton;
 
 public class AudioRecorderActivity extends Activity {
 

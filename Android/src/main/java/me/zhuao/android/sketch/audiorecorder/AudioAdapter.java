@@ -1,4 +1,4 @@
-package com.tw.sketch.audiorecorder;
+package me.zhuao.android.sketch.audiorecorder;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,11 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import com.tw.sketch.R;
 
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+
+import me.zhuao.android.sketch.R;
 
 public class AudioAdapter extends BaseAdapter {
 

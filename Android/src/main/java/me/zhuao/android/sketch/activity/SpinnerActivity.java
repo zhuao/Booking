@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.tw.sketch.activity;
+package me.zhuao.android.sketch.activity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -23,7 +23,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 import android.widget.AdapterView.OnItemSelectedListener;
-import com.tw.sketch.R;
+
+import me.zhuao.android.sketch.R;
 
 /**
  * Displays an Android spinner widget backed by data in an array. The
