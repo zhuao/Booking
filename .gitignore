@@ -16,3 +16,4 @@ AutomatedTest/gen/
 target/
 Android/.DS_Store
 local.properties
+.gradle
