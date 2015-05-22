@@ -10,7 +10,12 @@ dependencies {
 
     compile "com.android.support:appcompat-v7:18.0.+"
 
+    testCompile 'org.mockito:mockito-all:1.10.19'
     testCompile 'junit:junit:4.12'
+    testCompile ("com.squareup.assertj:assertj-android:1.0.0") {
+        exclude module:'support-annotations'
+    }
+    testCompile('org.robolectric:robolectric:2.4')
 }
 
 android {
