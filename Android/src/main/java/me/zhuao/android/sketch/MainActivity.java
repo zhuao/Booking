@@ -8,6 +8,7 @@ import me.zhuao.android.sketch.activity.AudioRecorderActivity;
 import me.zhuao.android.sketch.activity.EditTextActivity;
 import me.zhuao.android.sketch.activity.MomentsActivity;
 import me.zhuao.android.sketch.activity.SpinnerActivity;
+import me.zhuao.android.sketch.activity.StepIndicatorActivity;
 
 public class MainActivity extends Activity {
 
@@ -31,5 +32,9 @@ public class MainActivity extends Activity {
 
     public void moments(View view) {
         startActivity(new Intent(this, MomentsActivity.class));
+    }
+
+    public void stepIndicator(View view) {
+        startActivity(new Intent(this, StepIndicatorActivity.class));
     }
 }
