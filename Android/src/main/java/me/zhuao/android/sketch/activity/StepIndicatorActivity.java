@@ -2,10 +2,9 @@ package me.zhuao.android.sketch.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
-
-import com.github.ksoichiro.android.observablescrollview.ObservableScrollView;
-import com.github.ksoichiro.android.observablescrollview.ObservableScrollViewCallbacks;
-import com.github.ksoichiro.android.observablescrollview.ScrollState;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ScrollView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -18,7 +17,7 @@ public class StepIndicatorActivity extends Activity{
     StepsBar stepsBar;
 
     @InjectView(R.id.step_indicator_scroll_view)
-    ObservableScrollView scrollView;
+    ScrollView scrollView;
 
     private float mPrevScrollY;
 
@@ -32,26 +31,15 @@ public class StepIndicatorActivity extends Activity{
     }
 
     private void addScrollListener() {
-        scrollView.setScrollViewCallbacks(new ObservableScrollViewCallbacks() {
+        scrollView.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onScrollChanged(int scrollY, boolean b, boolean b1) {
-                boolean scrollUp = mPrevScrollY < scrollY;
-                if (scrollUp) {
-                    stepsBar.slideText(scrollY);
-                } else {
-                    stepsBar.slideText(scrollY);
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    mPrevScrollY = event.getY();
+                } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
+                    stepsBar.slideText(scrollView.getScrollY());
                 }
-                mPrevScrollY = scrollY;
-            }
-
-            @Override
-            public void onDownMotionEvent() {
-
-            }
-
-            @Override
-            public void onUpOrCancelMotionEvent(ScrollState scrollState) {
-
+                return false;
             }
         });
 
