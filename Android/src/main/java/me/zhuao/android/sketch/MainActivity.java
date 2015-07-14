@@ -3,6 +3,8 @@ package me.zhuao.android.sketch;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -21,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
     @InjectView(R.id.navigation)
     NavigationView navigationView;
 
+    @InjectView(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
+
     @InjectView(R.id.toolbar)
     Toolbar toolbar;
 
@@ -30,11 +35,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        attacheNavigationListener();
-    }
 
-    private void attacheNavigationListener() {
+        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
+        drawerToggle.syncState();
+        drawerLayout.setDrawerListener(drawerToggle);
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
