@@ -4,9 +4,10 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
+import me.zhuao.android.sketch.BaseActivity;
 import me.zhuao.android.sketch.R;
 
-public class MomentsActivity extends Activity {
+public class MomentsActivity extends BaseActivity {
 
     private String jsmith = "jsmith";
 
@@ -14,7 +15,7 @@ public class MomentsActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.moments);
+        inflateLayout(R.layout.moments);
     }
 
     @Override

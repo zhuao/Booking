@@ -7,6 +7,7 @@ import android.widget.ListView;
 
 import java.io.File;
 
+import me.zhuao.android.sketch.BaseActivity;
 import me.zhuao.android.sketch.R;
 import me.zhuao.android.sketch.audiorecorder.AudioAdapter;
 import me.zhuao.android.sketch.audiorecorder.AudioFolderOperator;
@@ -14,7 +15,7 @@ import me.zhuao.android.sketch.audiorecorder.AudioPlayerService;
 import me.zhuao.android.sketch.audiorecorder.AudioRecorderService;
 import me.zhuao.android.sketch.audiorecorder.RecorderButton;
 
-public class AudioRecorderActivity extends Activity {
+public class AudioRecorderActivity extends BaseActivity {
 
 
     public static File audioFile = null;
@@ -26,7 +27,7 @@ public class AudioRecorderActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.recorder);
+        inflateLayout(R.layout.recorder);
 
         RecorderButton recorderButton = (RecorderButton) findViewById(R.id.record_btn);
         recorderButton.appendClickAction(new View.OnClickListener() {

@@ -1,18 +1,18 @@
 package me.zhuao.android.sketch.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import me.zhuao.android.sketch.BaseActivity;
 import me.zhuao.android.sketch.R;
 
 
-public class EditTextActivity extends Activity {
+public class EditTextActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.edit_text);
+        inflateLayout(R.layout.edit_text);
     }
 
     public void clear(View view) {

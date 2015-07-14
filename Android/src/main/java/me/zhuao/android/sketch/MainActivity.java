@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +17,7 @@ import me.zhuao.android.sketch.activity.MomentsActivity;
 import me.zhuao.android.sketch.activity.SpinnerActivity;
 import me.zhuao.android.sketch.activity.StepIndicatorActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @InjectView(R.id.navigation)
     NavigationView navigationView;
@@ -32,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        inflateLayout(R.layout.activity_main);
         ButterKnife.inject(this);
         setSupportActionBar(toolbar);
 

@@ -2,8 +2,15 @@
 <resources>
 
     <style name="App" />
-
     <style name="App.Theme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/app_primary_color</item>
+        <item name="colorPrimaryDark">@color/app_status_bar_color</item>
+        <item name="android:textColorPrimary">@color/app_text_primary_color</item>
+        <item name="android:background">@color/app_background_color</item>
+        <item name="drawerArrowStyle">@style/drawerArrowToggleStyle</item>
+    </style>
 
+    <style name="drawerArrowToggleStyle" parent="@style/Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/app_background_color</item>
     </style>
 </resources>

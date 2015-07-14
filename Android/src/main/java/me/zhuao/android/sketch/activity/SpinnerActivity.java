@@ -71,12 +71,6 @@ public class SpinnerActivity extends Activity {
      */
     public static final String SELECTION_KEY = "Selection";
 
-    public static final String POSITION_MARKER =
-            POSITION_KEY + PROPERTY_DELIMITER;
-
-    public static final String SELECTION_MARKER =
-            SELECTION_KEY + PROPERTY_DELIMITER;
-
     /**
      * Initializes the application and the activity.
      * 1) Sets the view
