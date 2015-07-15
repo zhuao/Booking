@@ -1,4 +1,4 @@
-package me.zhuao.android.sketch.view;
+package me.zhuao.android.stepIndicator.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -9,7 +9,7 @@ import android.view.animation.ScaleAnimation;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-import me.zhuao.android.sketch.R;
+import me.zhuao.android.stepIndicator.R;
 
 public class StepsBar extends LinearLayout {
 

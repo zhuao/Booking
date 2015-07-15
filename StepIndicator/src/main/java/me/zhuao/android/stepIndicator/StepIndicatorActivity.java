@@ -1,4 +1,4 @@
-package me.zhuao.android.sketch.activity;
+package me.zhuao.android.stepIndicator;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,17 +6,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ScrollView;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import me.zhuao.android.sketch.R;
-import me.zhuao.android.sketch.view.StepsBar;
+import me.zhuao.android.stepIndicator.view.StepsBar;
 
 public class StepIndicatorActivity extends Activity{
 
-    @InjectView(R.id.step_indicator_bar)
-    StepsBar stepsBar;
+    private StepsBar stepsBar;
 
-    @InjectView(R.id.step_indicator_scroll_view)
     ScrollView scrollView;
 
     private float mPrevScrollY;
@@ -25,8 +20,8 @@ public class StepIndicatorActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.step_indicator_activity);
-        ButterKnife.inject(this);
-
+        stepsBar = ((StepsBar) findViewById(R.id.step_indicator_bar));
+        scrollView = (ScrollView) findViewById(R.id.step_indicator_scroll_view);
         addScrollListener();
     }
 
