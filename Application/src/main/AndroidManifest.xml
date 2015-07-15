@@ -31,8 +31,6 @@
                   android:label="@string/app_name"/>
         <activity android:name=".activity.AudioRecorderActivity"
                 android:label="@string/app_name"/>
-        <activity android:name=".activity.StepIndicatorActivity"
-            android:label="@string/app_name"/>
 
     </application>
 

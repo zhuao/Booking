@@ -14,7 +14,7 @@ public class StepIndicatorActivity extends Activity{
 
     ScrollView scrollView;
 
-    private float mPrevScrollY;
+    private float mPreviousY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +29,15 @@ public class StepIndicatorActivity extends Activity{
         scrollView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                int scrollY = v.getScrollY();
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    mPrevScrollY = event.getY();
+                    mPreviousY = scrollY;
                 } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
-                    stepsBar.slideText(scrollView.getScrollY());
+                    v.requestFocusFromTouch();
+                    stepsBar.slideText(Float.valueOf(Math.abs(mPreviousY - scrollY)).intValue(), scrollY > mPreviousY);
+                    mPreviousY = scrollY;
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    stepsBar.finishSlide();
                 }
                 return false;
             }
