@@ -3,8 +3,8 @@ package me.zhuao.android.sample.activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
+import me.zhuao.android.sample.R;
 import me.zhuao.android.sketch.BaseActivity;
-import me.zhuao.android.sketch.R;
 
 public class MomentsActivity extends BaseActivity {
 

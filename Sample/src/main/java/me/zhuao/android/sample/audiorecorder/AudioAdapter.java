@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
-import me.zhuao.android.sketch.R;
+import me.zhuao.android.sample.R;
 
 public class AudioAdapter extends BaseAdapter {
 

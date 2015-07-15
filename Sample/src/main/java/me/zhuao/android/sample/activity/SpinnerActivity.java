@@ -24,13 +24,15 @@ import android.view.View;
 import android.widget.*;
 import android.widget.AdapterView.OnItemSelectedListener;
 
-import me.zhuao.android.sketch.R;
+import me.zhuao.android.sample.R;
+import me.zhuao.android.sketch.BaseActivity;
+
 
 /**
  * Displays an Android spinner widget backed by data in an array. The
  * array is loaded from the strings.xml resources file.
  */
-public class SpinnerActivity extends Activity {
+public class SpinnerActivity extends BaseActivity {
 
     /**
      * Fields to contain the current position and display contents of the spinner
@@ -92,7 +94,7 @@ public class SpinnerActivity extends Activity {
          */
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.main);
+        inflateLayout(R.layout.main);
 
         Spinner spinner = (Spinner) findViewById(R.id.Spinner01);
 

@@ -9,12 +9,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
-import me.zhuao.android.sketch.BaseActivity;
 import me.zhuao.android.sample.activity.AudioRecorderActivity;
 import me.zhuao.android.sample.activity.EditTextActivity;
 import me.zhuao.android.sample.activity.MomentsActivity;
 import me.zhuao.android.sample.activity.SpinnerActivity;
 import me.zhuao.android.sample.activity.StepIndicatorActivity;
+import me.zhuao.android.sketch.BaseActivity;
 
 public class MainActivity extends BaseActivity {
 
@@ -27,11 +27,11 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        inflateLayout(me.zhuao.android.sketch.R.layout.activity_main);
+        inflateLayout(R.layout.activity_main);
 
-        navigationView = ((NavigationView) findViewById(me.zhuao.android.sketch.R.id.navigation));
-        drawerLayout = (DrawerLayout) findViewById(me.zhuao.android.sketch.R.id.drawer_layout);
-        toolbar = (Toolbar) findViewById(me.zhuao.android.sketch.R.id.toolbar);
+        navigationView = ((NavigationView) findViewById(R.id.navigation));
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
 
@@ -42,7 +42,7 @@ public class MainActivity extends BaseActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
-                if (menuItem.getItemId() == me.zhuao.android.sketch.R.id.navigation_spinner) {
+                if (menuItem.getItemId() == R.id.navigation_spinner) {
                     spinner(null);
                 }
                 return false;
