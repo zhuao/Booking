@@ -1,10 +1,10 @@
-package me.zhuao.android.sketch.audiorecorder;
+package me.zhuao.android.sample.audiorecorder;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
-import me.zhuao.android.sketch.activity.AudioRecorderActivity;
+import me.zhuao.android.sample.activity.AudioRecorderActivity;
 
 public class PlayerButton extends Button {
     private boolean startPlaying = false;

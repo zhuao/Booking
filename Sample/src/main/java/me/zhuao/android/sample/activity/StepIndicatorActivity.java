@@ -1,4 +1,4 @@
-package me.zhuao.android.sketch.activity;
+package me.zhuao.android.sample.activity;
 
 import android.os.Bundle;
 import android.view.MotionEvent;

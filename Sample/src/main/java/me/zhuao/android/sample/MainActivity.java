@@ -1,4 +1,4 @@
-package me.zhuao.android.sketch;
+package me.zhuao.android.sample;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,30 +9,30 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import me.zhuao.android.sketch.activity.AudioRecorderActivity;
-import me.zhuao.android.sketch.activity.EditTextActivity;
-import me.zhuao.android.sketch.activity.MomentsActivity;
-import me.zhuao.android.sketch.activity.SpinnerActivity;
-import me.zhuao.android.sketch.activity.StepIndicatorActivity;
+import me.zhuao.android.sketch.BaseActivity;
+import me.zhuao.android.sample.activity.AudioRecorderActivity;
+import me.zhuao.android.sample.activity.EditTextActivity;
+import me.zhuao.android.sample.activity.MomentsActivity;
+import me.zhuao.android.sample.activity.SpinnerActivity;
+import me.zhuao.android.sample.activity.StepIndicatorActivity;
 
 public class MainActivity extends BaseActivity {
 
-    @InjectView(R.id.navigation)
     NavigationView navigationView;
 
-    @InjectView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
 
-    @InjectView(R.id.toolbar)
     Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        inflateLayout(R.layout.activity_main);
-        ButterKnife.inject(this);
+        inflateLayout(me.zhuao.android.sketch.R.layout.activity_main);
+
+        navigationView = ((NavigationView) findViewById(me.zhuao.android.sketch.R.id.navigation));
+        drawerLayout = (DrawerLayout) findViewById(me.zhuao.android.sketch.R.id.drawer_layout);
+        toolbar = (Toolbar) findViewById(me.zhuao.android.sketch.R.id.toolbar);
+
         setSupportActionBar(toolbar);
 
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
@@ -42,7 +42,7 @@ public class MainActivity extends BaseActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
-                if (menuItem.getItemId() == R.id.navigation_spinner) {
+                if (menuItem.getItemId() == me.zhuao.android.sketch.R.id.navigation_spinner) {
                     spinner(null);
                 }
                 return false;

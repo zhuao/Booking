@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Planets">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+        <item>Pluto</item>
+    </string-array>
+    <string name="planet_prompt">Select a planet</string>
+
+    <string name="step_1_sample_text">Price</string>
+    <string name="step_2_sample_text">Passenger</string>
+    <string name="step_3_sample_text">Payment</string>
+    <string name="step_4_sample_text">Confirmation</string>
+</resources>

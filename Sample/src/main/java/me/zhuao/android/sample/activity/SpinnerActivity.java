@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package me.zhuao.android.sketch.activity;
+package me.zhuao.android.sample.activity;
 
 import android.app.Activity;
 import android.content.Context;

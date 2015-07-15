@@ -1,6 +1,5 @@
-package me.zhuao.android.sketch.activity;
+package me.zhuao.android.sample.activity;
 
-import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 

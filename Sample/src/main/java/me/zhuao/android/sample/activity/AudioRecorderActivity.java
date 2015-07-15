@@ -1,6 +1,5 @@
-package me.zhuao.android.sketch.activity;
+package me.zhuao.android.sample.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
@@ -9,11 +8,11 @@ import java.io.File;
 
 import me.zhuao.android.sketch.BaseActivity;
 import me.zhuao.android.sketch.R;
-import me.zhuao.android.sketch.audiorecorder.AudioAdapter;
-import me.zhuao.android.sketch.audiorecorder.AudioFolderOperator;
-import me.zhuao.android.sketch.audiorecorder.AudioPlayerService;
-import me.zhuao.android.sketch.audiorecorder.AudioRecorderService;
-import me.zhuao.android.sketch.audiorecorder.RecorderButton;
+import me.zhuao.android.sample.audiorecorder.AudioAdapter;
+import me.zhuao.android.sample.audiorecorder.AudioFolderOperator;
+import me.zhuao.android.sample.audiorecorder.AudioPlayerService;
+import me.zhuao.android.sample.audiorecorder.AudioRecorderService;
+import me.zhuao.android.sample.audiorecorder.RecorderButton;
 
 public class AudioRecorderActivity extends BaseActivity {
 
@@ -44,6 +43,7 @@ public class AudioRecorderActivity extends BaseActivity {
 
     @Override
     protected void onResume() {
+        super.onResume();
         adapter.refreshData();
     }
 

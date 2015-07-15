@@ -11,29 +11,6 @@
         Sets the application's user-readable label
      -->
     <application android:label="@string/app_name" android:theme="@style/App.Theme">
-        <!--
-            Sets the activity's name and label
-         -->
-        <activity android:name=".MainActivity"
-                  android:label="@string/app_name">
-            <!--
-                    This activity responds to MAIN and LAUNCHER intents
-                 -->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".activity.SpinnerActivity"
-                  android:label="@string/app_name"/>
-        <activity android:name=".activity.EditTextActivity"
-                  android:label="@string/app_name"/>
-        <activity android:name=".activity.AudioRecorderActivity"
-                android:label="@string/app_name"/>
-        <activity android:name=".activity.StepIndicatorActivity"
-            android:label="@string/app_name"/>
-
     </application>
 
 </manifest>

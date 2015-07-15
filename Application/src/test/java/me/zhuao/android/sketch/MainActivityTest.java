@@ -6,7 +6,7 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.util.ActivityController;
 
-import me.zhuao.android.sketch.activity.EditTextActivity;
+import me.zhuao.android.sample.activity.EditTextActivity;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

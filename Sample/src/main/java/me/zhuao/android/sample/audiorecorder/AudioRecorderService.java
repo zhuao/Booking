@@ -1,4 +1,4 @@
-package me.zhuao.android.sketch.audiorecorder;
+package me.zhuao.android.sample.audiorecorder;
 
 import android.content.Context;
 import android.media.MediaRecorder;
