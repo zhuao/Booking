@@ -7,14 +7,14 @@ import android.widget.ListView;
 import java.io.File;
 
 import me.zhuao.android.sample.R;
-import me.zhuao.android.sketch.BaseActivity;
+import me.zhuao.android.sketch.ToolbarActivity;
 import me.zhuao.android.sample.audiorecorder.AudioAdapter;
 import me.zhuao.android.sample.audiorecorder.AudioFolderOperator;
 import me.zhuao.android.sample.audiorecorder.AudioPlayerService;
 import me.zhuao.android.sample.audiorecorder.AudioRecorderService;
 import me.zhuao.android.sample.audiorecorder.RecorderButton;
 
-public class AudioRecorderActivity extends BaseActivity {
+public class AudioRecorderActivity extends ToolbarActivity {
 
 
     public static File audioFile = null;

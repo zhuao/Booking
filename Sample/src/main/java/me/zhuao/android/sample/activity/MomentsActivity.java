@@ -4,9 +4,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 
 import me.zhuao.android.sample.R;
-import me.zhuao.android.sketch.BaseActivity;
+import me.zhuao.android.sketch.ToolbarActivity;
 
-public class MomentsActivity extends BaseActivity {
+public class MomentsActivity extends ToolbarActivity {
 
     private String jsmith = "jsmith";
 

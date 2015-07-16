@@ -3,9 +3,6 @@ package me.zhuao.android.sample;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -14,31 +11,18 @@ import me.zhuao.android.sample.activity.EditTextActivity;
 import me.zhuao.android.sample.activity.MomentsActivity;
 import me.zhuao.android.sample.activity.SpinnerActivity;
 import me.zhuao.android.sample.activity.StepIndicatorActivity;
-import me.zhuao.android.sketch.BaseActivity;
+import me.zhuao.android.sketch.DrawerLayoutActivity;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends DrawerLayoutActivity {
 
     NavigationView navigationView;
-
-    DrawerLayout drawerLayout;
-
-    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        inflateLayout(R.layout.activity_main);
+        inflateLayout(R.layout.function_lists);
 
-        navigationView = ((NavigationView) findViewById(R.id.navigation));
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-
-        setSupportActionBar(toolbar);
-
-        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
-        drawerToggle.syncState();
-        drawerLayout.setDrawerListener(drawerToggle);
-
+        navigationView = (NavigationView) findViewById(R.id.navigation_main);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
@@ -48,6 +32,11 @@ public class MainActivity extends BaseActivity {
                 return false;
             }
         });
+    }
+
+    @Override
+    protected int getDrawerLayoutResId() {
+        return R.layout.main_drawer_layout;
     }
 
     public void spinner(View view) {

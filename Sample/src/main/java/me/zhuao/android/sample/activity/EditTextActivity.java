@@ -5,10 +5,10 @@ import android.view.View;
 import android.widget.EditText;
 
 import me.zhuao.android.sample.R;
-import me.zhuao.android.sketch.BaseActivity;
+import me.zhuao.android.sketch.ToolbarActivity;
 
 
-public class EditTextActivity extends BaseActivity {
+public class EditTextActivity extends ToolbarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

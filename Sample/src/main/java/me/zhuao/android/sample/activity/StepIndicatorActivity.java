@@ -6,10 +6,10 @@ import android.view.View;
 import android.widget.ScrollView;
 
 import me.zhuao.android.sample.R;
-import me.zhuao.android.sketch.BaseActivity;
+import me.zhuao.android.sketch.ToolbarActivity;
 import me.zhuao.android.stepIndicator.view.StepsBar;
 
-public class StepIndicatorActivity extends BaseActivity{
+public class StepIndicatorActivity extends ToolbarActivity {
 
     private StepsBar stepsBar;
 

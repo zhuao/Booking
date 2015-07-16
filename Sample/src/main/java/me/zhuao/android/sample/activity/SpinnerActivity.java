@@ -25,14 +25,14 @@ import android.widget.*;
 import android.widget.AdapterView.OnItemSelectedListener;
 
 import me.zhuao.android.sample.R;
-import me.zhuao.android.sketch.BaseActivity;
+import me.zhuao.android.sketch.ToolbarActivity;
 
 
 /**
  * Displays an Android spinner widget backed by data in an array. The
  * array is loaded from the strings.xml resources file.
  */
-public class SpinnerActivity extends BaseActivity {
+public class SpinnerActivity extends ToolbarActivity {
 
     /**
      * Fields to contain the current position and display contents of the spinner
