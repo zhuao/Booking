@@ -1,3 +1,3 @@
-include ':Application'
+include ':Base'
 include ':Sample'
-include ':StepIndicator'
+include ':View:StepIndicator'
