@@ -13,7 +13,7 @@ public class ToolbarActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_base);
+        super.setContentView(R.layout.activity_base);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -25,9 +25,10 @@ public class ToolbarActivity extends AppCompatActivity {
         });
     }
 
-    protected void inflateLayout(int layoutResId) {
+    @Override
+    public void setContentView(int layoutResID) {
         FrameLayout content = (FrameLayout) findViewById(R.id.fragment_content);
-        getLayoutInflater().inflate(layoutResId, content);
+        getLayoutInflater().inflate(layoutResID, content);
     }
 
     protected void inflateFragment(Fragment frag) {

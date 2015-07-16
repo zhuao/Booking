@@ -12,7 +12,7 @@ public class EditTextActivity extends ToolbarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        inflateLayout(R.layout.edit_text);
+        setContentView(R.layout.edit_text);
     }
 
     public void clear(View view) {

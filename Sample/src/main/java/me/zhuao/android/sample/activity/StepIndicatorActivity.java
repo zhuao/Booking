@@ -20,7 +20,7 @@ public class StepIndicatorActivity extends ToolbarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        inflateLayout(R.layout.activity_step_indicator);
+        setContentView(R.layout.activity_step_indicator);
         stepsBar = ((StepsBar) findViewById(R.id.step_indicator_bar));
         scrollView = (ScrollView) findViewById(R.id.step_indicator_scroll_view);
         addScrollListener();

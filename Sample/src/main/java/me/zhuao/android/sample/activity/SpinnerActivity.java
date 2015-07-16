@@ -94,7 +94,7 @@ public class SpinnerActivity extends ToolbarActivity {
          */
         super.onCreate(savedInstanceState);
 
-        inflateLayout(R.layout.main);
+        setContentView(R.layout.main);
 
         Spinner spinner = (Spinner) findViewById(R.id.Spinner01);
 

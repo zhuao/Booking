@@ -14,7 +14,7 @@ public class MomentsActivity extends ToolbarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        inflateLayout(R.layout.moments);
+        setContentView(R.layout.moments);
     }
 
     @Override

@@ -20,7 +20,7 @@ public class MainActivity extends DrawerLayoutActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        inflateLayout(R.layout.function_lists);
+        setContentView(R.layout.function_lists);
 
         navigationView = (NavigationView) findViewById(R.id.navigation_main);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {

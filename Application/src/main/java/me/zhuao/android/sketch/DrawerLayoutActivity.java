@@ -12,7 +12,7 @@ public abstract class DrawerLayoutActivity extends ToolbarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.inflateLayout(R.layout.activity_drawer_layout);
+        super.setContentView(R.layout.activity_drawer_layout);
         ViewStub navigationView = ((ViewStub) findViewById(R.id.navigation));
         navigationView.setLayoutResource(getDrawerLayoutResId());
         navigationView.inflate().setVisibility(View.VISIBLE);
@@ -31,9 +31,10 @@ public abstract class DrawerLayoutActivity extends ToolbarActivity {
     protected abstract int getDrawerLayoutResId();
 
     @Override
-    protected void inflateLayout(int layoutResId) {
+    public void setContentView(int layoutResID) {
         ViewStub pageContentView = ((ViewStub) findViewById(R.id.page_content));
-        pageContentView.setLayoutResource(layoutResId);
+        pageContentView.setLayoutResource(layoutResID);
         pageContentView.inflate().setVisibility(View.VISIBLE);
     }
+
 }

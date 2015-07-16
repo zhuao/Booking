@@ -26,7 +26,7 @@ public class AudioRecorderActivity extends ToolbarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        inflateLayout(R.layout.recorder);
+        setContentView(R.layout.recorder);
 
         RecorderButton recorderButton = (RecorderButton) findViewById(R.id.record_btn);
         recorderButton.appendClickAction(new View.OnClickListener() {
