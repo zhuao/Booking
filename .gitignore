@@ -9,7 +9,7 @@
 build/
 **/build/
 Base/src/test/java/android/
-AutomatedTest/gen/
 local.properties
 **/local.properties
 .gradle
+AutomatedTest/test_servers/

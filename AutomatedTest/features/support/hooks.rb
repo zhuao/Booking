@@ -1,0 +1,2 @@
+Before do |scenario|
+end
