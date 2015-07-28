@@ -5,30 +5,35 @@
     android:orientation="vertical">
 
     <Button
+        android:id="@+id/function_list_spinner"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:onClick="spinner"
         android:text="Spinner" />
 
     <Button
+        android:id="@+id/function_list_input"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:onClick="text"
         android:text="Input View" />
 
     <Button
+        android:id="@+id/function_list_audio_recorder"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:onClick="recorder"
         android:text="Audio Recorder" />
 
     <Button
+        android:id="@+id/function_list_moment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="moments"
         android:text="Moments" />
 
     <Button
+        android:id="@+id/function_list_step_indicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="stepIndicator"
