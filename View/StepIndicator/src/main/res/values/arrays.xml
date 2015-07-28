@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string-array name="sample_step_text" >
-        <item>@string/step_1_sample_text</item>
-        <item>@string/step_2_sample_text</item>
-        <item>@string/step_3_sample_text</item>
-        <item>@string/step_4_sample_text</item>
-    </string-array>
-</resources>
