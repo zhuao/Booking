@@ -10,7 +10,7 @@
     <!--
         Sets the application's user-readable label
      -->
-    <application android:label="@string/app_name" android:theme="@style/App.Theme">
+    <application android:label="@string/app_name" android:theme="@style/App.BaseTheme">
     </application>
 
 </manifest>

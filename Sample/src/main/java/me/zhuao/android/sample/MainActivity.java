@@ -15,29 +15,23 @@ import me.zhuao.android.sketch.DrawerLayoutActivity;
 
 public class MainActivity extends DrawerLayoutActivity {
 
-    NavigationView navigationView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.function_lists);
-
-
-        navigationView = (NavigationView) findViewById(R.id.navigation_main);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-                if (menuItem.getItemId() == R.id.navigation_spinner) {
-                    spinner(null);
-                }
-                return false;
-            }
-        });
     }
 
     @Override
     protected int getDrawerLayoutResId() {
         return R.layout.main_drawer_layout;
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem menuItem) {
+        if (menuItem.getItemId() == R.id.navigation_spinner) {
+            spinner(null);
+        }
+        return false;
     }
 
     public void spinner(View view) {

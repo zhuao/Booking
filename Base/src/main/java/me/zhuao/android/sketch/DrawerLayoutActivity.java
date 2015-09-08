@@ -1,13 +1,14 @@
 package me.zhuao.android.sketch;
 
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewStub;
 
-public abstract class DrawerLayoutActivity extends ToolbarActivity {
+public abstract class DrawerLayoutActivity extends ToolbarActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,7 +16,9 @@ public abstract class DrawerLayoutActivity extends ToolbarActivity {
         super.setContentView(R.layout.activity_drawer_layout);
         ViewStub navigationView = ((ViewStub) findViewById(R.id.navigation));
         navigationView.setLayoutResource(getDrawerLayoutResId());
-        navigationView.inflate().setVisibility(View.VISIBLE);
+        NavigationView navigateView = ((NavigationView) navigationView.inflate());
+        navigateView.setNavigationItemSelectedListener(this);
+        navigateView.setVisibility(View.VISIBLE);
     }
 
     @Override
