@@ -16,12 +16,12 @@ dependencies {
 }
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion appTargetSDKVersion.toInteger()
+    buildToolsVersion appBuildToolVersion
 
     defaultConfig {
-        minSdkVersion 11
-        targetSdkVersion 22
+        minSdkVersion appMinSDKVersion.toInteger()
+        targetSdkVersion appTargetSDKVersion.toInteger()
     }
 
     signingConfigs {

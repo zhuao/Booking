@@ -17,12 +17,12 @@ dependencies {
 }
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "22.0.1"
+    compileSdkVersion appTargetSDKVersion.toInteger()
+    buildToolsVersion appBuildToolVersion
 
     defaultConfig {
-        minSdkVersion 11
-        targetSdkVersion 21
+        minSdkVersion appMinSDKVersion.toInteger()
+        targetSdkVersion appTargetSDKVersion.toInteger()
     }
 }
 
