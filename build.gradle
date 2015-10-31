@@ -14,4 +14,12 @@ allprojects {
     repositories {
         jcenter()
     }
+
+
+    ext {
+        appMinSDKVersion=11
+        appTargetSDKVersion=23
+        appBuildToolVersion = "23.0.2"
+        androidSupportVersion= "23.1.0"
+    }
 }
