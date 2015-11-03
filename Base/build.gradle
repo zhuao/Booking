@@ -26,7 +26,7 @@ android {
     }
 }
 
-def package_namespace = "me.zhuao.android.sketch"
+def package_namespace = "com.thoughtworks.android.booking"
 def package_namespace_path = package_namespace.replaceAll("\\.", "/")
 
 afterEvaluate { project ->

@@ -3,7 +3,7 @@ task functionalTests(type:Exec, dependsOn: ['bundleInstall']) {
     group JavaBasePlugin.VERIFICATION_GROUP
 
 
-    def appProject = project(":Sample")
+    def appProject = project(":App")
     def targetPath = "$appProject.projectDir.path/build/outputs/apk/$appProject.name-debug.apk"
 
     executable 'calabash-android'
