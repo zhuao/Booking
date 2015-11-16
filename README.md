@@ -1,4 +1,5 @@
 [![Stories in Ready](https://badge.waffle.io/zhuao/Booking.png?label=ready&title=Ready)](https://waffle.io/zhuao/Booking)
+[![Build Status](https://travis-ci.org/zhuao/Booking.svg?branch=master)](https://travis-ci.org/zhuao/Booking)
 AndroidSketch
 =============
 Android application project template.
