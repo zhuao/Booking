@@ -1,46 +1,5 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ViewStub xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:fitsSystemWindows="true">
-
-    <ViewStub
-        android:id="@+id/toolbar_outside"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout="@layout/toolbar"/>
-
-    <android.support.v4.widget.DrawerLayout
-        android:id="@+id/drawer_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
-
-            <ViewStub
-                android:id="@+id/toolbar_inside"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout="@layout/toolbar"/>
-
-            <FrameLayout
-                android:id="@+id/fragment_content"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-        </LinearLayout>
-
-        <ViewStub
-            android:id="@+id/navigation"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start" />
-
-    </android.support.v4.widget.DrawerLayout>
-
-
-
-</LinearLayout>
+    android:fitsSystemWindows="true"/>

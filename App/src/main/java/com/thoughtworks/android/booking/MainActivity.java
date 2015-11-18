@@ -3,7 +3,7 @@ package com.thoughtworks.android.booking;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import me.zhuao.android.sketch.DrawerLayoutActivity;
+import me.zhuao.android.sketch.activity.DrawerLayoutActivity;
 
 public class MainActivity extends DrawerLayoutActivity {
 

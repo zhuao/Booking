@@ -10,8 +10,8 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"/>
 
-    <FrameLayout
-        android:id="@+id/fragment_content"
+    <ViewStub
+        android:id="@+id/toolbar_below"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
