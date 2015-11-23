@@ -1,9 +1,10 @@
 package com.thoughtworks.android.booking.Server.Response;
 
+import com.thoughtworks.android.booking.Model.RoomInformation;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import practice.andriod.com.boro.Model.RoomInformation;
 
 /**
  * Created by hxxu on 11/17/15.
