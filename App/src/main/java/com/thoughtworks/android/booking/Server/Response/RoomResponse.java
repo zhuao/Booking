@@ -20,4 +20,15 @@ public class RoomResponse {
     public List<RoomInformation> getResults() {
         return results;
     }
+
+    public String getRoomIDAccoringToTheRoomName(String roomName){
+        for (RoomInformation roomInformation:results) {
+            if(roomInformation.getName() == roomName) {
+                return roomInformation.getObjectId();
+            }else {
+                return null;
+            }
+        }
+        return null;
+    }
 }

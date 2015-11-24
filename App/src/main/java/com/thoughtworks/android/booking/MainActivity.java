@@ -3,6 +3,10 @@ package com.thoughtworks.android.booking;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.thoughtworks.android.booking.Database.DatabaseOperation;
+
+import java.util.Date;
+
 import me.zhuao.android.sketch.activity.DrawerLayoutActivity;
 
 public class MainActivity extends DrawerLayoutActivity {
