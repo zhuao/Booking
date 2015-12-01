@@ -12,6 +12,10 @@ import java.util.List;
 public class RoomResponse {
     private List<RoomInformation> results;
 
+    public RoomResponse() {
+        this.results = new ArrayList<>();
+    }
+
     public void emptyRoomResponse(){
         if(results != null) {
             results = new ArrayList<>();
@@ -31,4 +35,5 @@ public class RoomResponse {
         }
         return null;
     }
+
 }

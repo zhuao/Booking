@@ -1,7 +1,10 @@
 package com.thoughtworks.android.booking.Model;
 
+import com.thoughtworks.android.booking.Server.Response.BookResponse;
+
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Objects;
 
 
 /**
@@ -9,26 +12,29 @@ import java.sql.Date;
  */
 public class RoomInformation implements Serializable {
     private  String objectId;
-    private  Number barcode;
-    private Date createdAt;
-    private Date updatedAt;
+    private  String barcode;
+//    private Date createdAt;
+//    private Date updatedAt;
     private String name;
+    private boolean isUsing;
+    private Number content;
+    private Object material;
 
     public String getObjectId() {
         return objectId;
     }
 
-    public Number getBarcode() {
+    public String getBarcode() {
         return barcode;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
+//    public Date getCreatedAt() {
+//        return createdAt;
+//    }
+//
+//    public Date getUpdatedAt() {
+//        return updatedAt;
+//    }
 
     public String getName() {
         return name;
@@ -38,10 +44,13 @@ public class RoomInformation implements Serializable {
         return content;
     }
 
-    public Material getMaterial() {
+    public Object getMaterial() {
         return material;
     }
 
-    private Number content;
-    private Material material;
+
+
+    public boolean isUsing() {
+        return isUsing;
+    }
 }

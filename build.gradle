@@ -17,7 +17,7 @@ allprojects {
 
 
     ext {
-        appMinSDKVersion=11
+        appMinSDKVersion=15
         appTargetSDKVersion=22
         appBuildToolVersion = "22.0.1"
         androidSupportVersion= "22.2.1"
