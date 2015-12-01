@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.thoughtworks.android.booking.Adapter.RoomInformationAdapter;
+import com.thoughtworks.android.booking.AppContent.StringContent;
 import com.thoughtworks.android.booking.Database.DatabaseOperation;
 import com.thoughtworks.android.booking.R;
 import com.thoughtworks.android.booking.Server.HttpService;
@@ -36,6 +37,11 @@ public class RoomInformationFragment extends BaseFragment{
     }
 
     @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -44,13 +50,14 @@ public class RoomInformationFragment extends BaseFragment{
 
     @Override
     protected String getFragmentTitle() {
-        return "RoomList";
+        return StringContent.ROOM_LSIT_TITILE;
     }
 
     @Override
     public void onStart() {
         super.onStart();
         EventBus.getDefault().register(this);
+        showProgressBar();
     }
 
     @Override
@@ -62,7 +69,8 @@ public class RoomInformationFragment extends BaseFragment{
     public void onEventMainThread(RoomResponse roomResponse){
         roomInformationAdapter.addRoomResponseToAdapter(roomResponse);
         roomInformationAdapter.notifyDataSetChanged();
-        Log.d("response", roomResponse.toString());
+        hideProgressBar();
+
     }
 
     @Nullable
@@ -78,4 +86,11 @@ public class RoomInformationFragment extends BaseFragment{
         return rootView;
     }
 
+    public void showProgressBar(){
+        getActivity().findViewById(R.id.progress_spinner).setVisibility(View.VISIBLE);
+    }
+
+    public void hideProgressBar(){
+        getActivity().findViewById(R.id.progress_spinner).setVisibility(View.INVISIBLE);
+    }
 }
