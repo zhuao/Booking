@@ -4,21 +4,7 @@
     <group android:checkableBehavior="single" >
 
         <item android:id="@+id/navigation_spinner"
-            android:title="Spinner2"
-            app:showAsAction="always"/>
-
-        <item android:id="@+id/navigation_input"
-            android:title="Input text"
-            app:showAsAction="always"/>
-
-        <item android:id="@+id/navigation_record"
-            android:title="Spinner2"
-            app:showAsAction="always"/>
-        <item android:id="@+id/navigation_moment"
-            android:title="Spinner2"
-            app:showAsAction="always"/>
-        <item android:id="@+id/navigation_stepIndicator"
-            android:title="Spinner2"
+            android:title="Scan Barcode"
             app:showAsAction="always"/>
     </group>
 </menu>

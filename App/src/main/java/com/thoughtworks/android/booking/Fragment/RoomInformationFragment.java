@@ -81,7 +81,7 @@ public class RoomInformationFragment extends BaseFragment{
         roomRecyclerView = (RecyclerView)rootView.findViewById(R.id.room_information_list);
         roomRecyclerView.setHasFixedSize(true);
         roomRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getBaseContext()));
-        roomInformationAdapter = new RoomInformationAdapter();
+        roomInformationAdapter = new RoomInformationAdapter(getActivity());
         roomRecyclerView.setAdapter(roomInformationAdapter);
         return rootView;
     }
