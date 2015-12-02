@@ -25,8 +25,6 @@ public class MainActivityTest {
     @Test
     public void should_display_button_to_open_stepIndicator() {
         mainActivity = Robolectric.setupActivity(MainActivity.class);
-        Button stepIndicatorButton = (Button) mainActivity.findViewById(R.id.function_list_step_indicator);
-        assertThat(stepIndicatorButton).containsText("Step Indicator");
 
 //        stepIndicatorButton.performClick();
 
