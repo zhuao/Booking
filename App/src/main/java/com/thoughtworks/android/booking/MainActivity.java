@@ -3,10 +3,13 @@ package com.thoughtworks.android.booking;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.thoughtworks.android.booking.Fragment.RoomInformationFragment;
+import com.thoughtworks.android.booking.Fragment.ScanFragment;
 
 import me.zhuao.android.sketch.activity.DrawerLayoutActivity;
 
@@ -26,9 +29,6 @@ public class MainActivity extends DrawerLayoutActivity {
 
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
-        if (menuItem.getItemId() == R.id.navigation_spinner) {
-            Toast.makeText(this,"right",Toast.LENGTH_SHORT);
-        }
         return false;
     }
 
@@ -36,5 +36,24 @@ public class MainActivity extends DrawerLayoutActivity {
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.main_fragment_content,fragment);
         fragmentTransaction.commit();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.option_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.barcode_scan:
+                startFragment(new ScanFragment());
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

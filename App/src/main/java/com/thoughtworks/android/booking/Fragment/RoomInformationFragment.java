@@ -4,24 +4,20 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.thoughtworks.android.booking.Adapter.RoomInformationAdapter;
 import com.thoughtworks.android.booking.AppContent.StringContent;
 import com.thoughtworks.android.booking.Database.DatabaseOperation;
 import com.thoughtworks.android.booking.R;
-import com.thoughtworks.android.booking.Server.HttpService;
 import com.thoughtworks.android.booking.Server.Response.RoomResponse;
-import com.thoughtworks.android.booking.Server.ServerInterface;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import de.greenrobot.event.EventBus;
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
 
 /**
  * Created by hxxu on 11/29/15.
@@ -45,12 +41,13 @@ public class RoomInformationFragment extends BaseFragment{
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        new DatabaseOperation().getRoomInformation();
+        new Timer().schedule(timer,0l,StringContent.REFRESH_ROOM_INFORMATION_TIME);
+
     }
 
     @Override
     protected String getFragmentTitle() {
-        return StringContent.ROOM_LSIT_TITILE;
+        return StringContent.RROM_LIST_FRAGMENT_TITLE;
     }
 
     @Override
@@ -93,4 +90,11 @@ public class RoomInformationFragment extends BaseFragment{
     public void hideProgressBar(){
         getActivity().findViewById(R.id.progress_spinner).setVisibility(View.INVISIBLE);
     }
+
+    private TimerTask timer = new TimerTask(){
+        @Override
+        public void run() {
+            new DatabaseOperation().getRoomInformation();
+        }
+    };
 }

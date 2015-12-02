@@ -52,15 +52,14 @@ public class RoomInformationAdapter extends RecyclerView.Adapter<RoomInformation
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-//        holder.setIsRecyclable(false); //disable the recycler to make sure the data not change accompany with the recycler
         TextView textView = (TextView)holder.view.findViewById(R.id.room_name_text);
-        textView.setText(roomResponse.getResults().get(position).getName());
         CardView cardView = (CardView)holder.view.findViewById(R.id.room_list_card_view);
         if(roomResponse.getResults().get(position).isUsing()){
           cardView.setCardBackgroundColor(context.getResources().getColor(R.color.red));
+            textView.setText(roomResponse.getResults().get(position).getName() + "(有人)");
         }else {
             cardView.setCardBackgroundColor(context.getResources().getColor(R.color.green));
-
+            textView.setText(roomResponse.getResults().get(position).getName() + "(无人)");
         }
     }
 
