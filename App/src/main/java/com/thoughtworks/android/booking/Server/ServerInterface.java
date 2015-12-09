@@ -1,12 +1,10 @@
 package com.thoughtworks.android.booking.Server;
 
 
-import com.thoughtworks.android.booking.RoomStatusUpdate;
+import com.thoughtworks.android.booking.Server.RequestBody.RoomStatusUpdate;
 import com.thoughtworks.android.booking.Server.Response.BookResponse;
 import com.thoughtworks.android.booking.Server.Response.RoomResponse;
 import com.thoughtworks.android.booking.Server.Response.UserResponse;
-
-import org.json.JSONObject;
 
 import retrofit.Callback;
 import retrofit.http.Body;
@@ -14,7 +12,6 @@ import retrofit.http.DELETE;
 import retrofit.http.GET;
 import retrofit.http.PUT;
 import retrofit.http.Path;
-import retrofit.http.QueryMap;
 
 /**
  * Created by hxxu on 11/16/15.

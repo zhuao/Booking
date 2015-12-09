@@ -2,15 +2,13 @@ package com.thoughtworks.android.booking.Database;
 
 import android.util.Log;
 
-import com.thoughtworks.android.booking.RoomStatusUpdate;
+import com.thoughtworks.android.booking.Server.RequestBody.RoomStatusUpdate;
 import com.thoughtworks.android.booking.Server.HttpCallBack;
 import com.thoughtworks.android.booking.Server.HttpService;
 import com.thoughtworks.android.booking.Server.Response.BookResponse;
 import com.thoughtworks.android.booking.Server.Response.RoomResponse;
 import com.thoughtworks.android.booking.Server.Response.UserResponse;
 import com.thoughtworks.android.booking.Server.ServerInterface;
-
-import org.json.JSONObject;
 
 import de.greenrobot.event.EventBus;
 

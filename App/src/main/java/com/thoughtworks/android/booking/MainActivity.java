@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.thoughtworks.android.booking.AppContent.StringContent;
@@ -84,13 +85,19 @@ public class MainActivity extends DrawerLayoutActivity {
 
     @Override
     public void onBackPressed() {
-        int number = getSupportFragmentManager().getBackStackEntryCount();
-        if(getSupportFragmentManager().getBackStackEntryCount() > 1) {
-            getSupportFragmentManager().popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        int number = getFragmentManager().getBackStackEntryCount();
+        if(getFragmentManager().getBackStackEntryCount() > 1) {
+            getFragmentManager().popBackStackImmediate();
+            hideProgressBar();
 
         }else {
             super.onBackPressed();
         }
 
+    }
+
+
+    public void hideProgressBar(){
+        this.findViewById(R.id.progress_spinner).setVisibility(View.INVISIBLE);
     }
 }

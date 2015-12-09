@@ -1,4 +1,4 @@
-package com.thoughtworks.android.booking;
+package com.thoughtworks.android.booking.Server.RequestBody;
 
 /**
  * Created by hxxu on 12/9/15.

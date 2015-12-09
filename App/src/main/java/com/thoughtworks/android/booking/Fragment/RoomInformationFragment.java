@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.thoughtworks.android.booking.Adapter.RoomInformationAdapter;
 import com.thoughtworks.android.booking.AppContent.StringContent;
 
+import com.thoughtworks.android.booking.MainActivity;
 import com.thoughtworks.android.booking.R;
 import com.thoughtworks.android.booking.Server.Response.RoomResponse;
 
@@ -52,7 +53,10 @@ public class RoomInformationFragment extends BaseFragment{
     public void onStart() {
         super.onStart();
         EventBus.getDefault().register(this);
-        showProgressBar();
+        if (MainActivity.roomResponse.getResults().size() == 0) {
+            showProgressBar();
+        }
+
     }
 
     @Override
@@ -66,6 +70,11 @@ public class RoomInformationFragment extends BaseFragment{
         roomInformationAdapter.notifyDataSetChanged();
         hideProgressBar();
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
     @Nullable

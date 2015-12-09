@@ -11,19 +11,14 @@ import android.widget.Toast;
 import com.journeyapps.barcodescanner.BarcodeCallback;
 import com.journeyapps.barcodescanner.BarcodeResult;
 
-import com.journeyapps.barcodescanner.CaptureManager;
 import com.journeyapps.barcodescanner.CompoundBarcodeView;
 import com.thoughtworks.android.booking.AppContent.StringContent;
 import com.thoughtworks.android.booking.Database.DatabaseOperation;
 import com.thoughtworks.android.booking.MainActivity;
 import com.thoughtworks.android.booking.Model.RoomInformation;
 import com.thoughtworks.android.booking.R;
-import com.thoughtworks.android.booking.RoomStatusUpdate;
+import com.thoughtworks.android.booking.Server.RequestBody.RoomStatusUpdate;
 import com.thoughtworks.android.booking.Server.Response.RoomResponse;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.List;
 
@@ -66,11 +61,13 @@ public class ScanFragment extends BaseFragment {
             for (RoomInformation roomInformation : MainActivity.roomResponse.getResults()) {
                 if(roomInformation.getBarcode().equals(barcodeResult.toString())){
                        if(roomInformation.isUsing()){
-                           Toast.makeText(context,"Sorry, the room you choose is using, please pick another one",Toast.LENGTH_SHORT).show();
+                           Toast.makeText(context,"Sorry, you are not the owner of this room now",Toast.LENGTH_SHORT).show();
+                           setTheRoomToBeUnUse(roomInformation.getObjectId());
                            compoundBarcodeView.resume();
                        }else {
-                           setTheRoomStatusToBeTrue(roomInformation.getObjectId());
-                           Toast.makeText(context,"Update room status success",Toast.LENGTH_SHORT).show();
+                           setTheRoomToBeUse(roomInformation.getObjectId());
+                           Toast.makeText(context,"Congratulation,you are the owner of this room now!",Toast.LENGTH_SHORT).show();
+
                        }
                 }
             }
@@ -106,8 +103,13 @@ public class ScanFragment extends BaseFragment {
         MainActivity.roomResponse = roomResponse;
     }
 
-    public void setTheRoomStatusToBeTrue(String objectID){
+    public void setTheRoomToBeUse(String objectID){
         RoomStatusUpdate roomStatusUpdate = new RoomStatusUpdate(true);
+        DatabaseOperation.updateRoomStatus(objectID,roomStatusUpdate);
+    }
+
+    public void setTheRoomToBeUnUse(String objectID){
+        RoomStatusUpdate roomStatusUpdate = new RoomStatusUpdate(false);
         DatabaseOperation.updateRoomStatus(objectID,roomStatusUpdate);
     }
 
