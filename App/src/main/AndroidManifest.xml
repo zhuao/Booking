@@ -7,9 +7,7 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <uses-permission android:name="android.permission.CAMERA"></uses-permission>
 
-    <uses-feature android:name="android.hardware.camera"
-        android:required="true"/>
-    <uses-feature android:name="android.hardware.camera.autofocus"
+    <uses-feature android:name="android.hardware.Camera"
         android:required="true"/>
     <!--
         Sets the application's user-readable label

@@ -1,5 +1,6 @@
 package com.thoughtworks.android.booking.Fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -13,7 +14,16 @@ import com.journeyapps.barcodescanner.BarcodeResult;
 import com.journeyapps.barcodescanner.CaptureManager;
 import com.journeyapps.barcodescanner.CompoundBarcodeView;
 import com.thoughtworks.android.booking.AppContent.StringContent;
+import com.thoughtworks.android.booking.Database.DatabaseOperation;
+import com.thoughtworks.android.booking.MainActivity;
+import com.thoughtworks.android.booking.Model.RoomInformation;
 import com.thoughtworks.android.booking.R;
+import com.thoughtworks.android.booking.RoomStatusUpdate;
+import com.thoughtworks.android.booking.Server.Response.RoomResponse;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -22,7 +32,13 @@ import java.util.List;
  */
 public class ScanFragment extends BaseFragment {
     private View rootView;
-    private CaptureManager captureManager;
+    private Context context;
+    private CompoundBarcodeView compoundBarcodeView;
+
+    public ScanFragment(Context context) {
+        this.context = context;
+    }
+
     @Override
     protected String getFragmentTitle() {
         return StringContent.SCAN_BARCODE_FRAGMENT_TITLE;
@@ -37,9 +53,8 @@ public class ScanFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.room_scan_layout,container,false);
-        CompoundBarcodeView compoundBarcodeView = (CompoundBarcodeView)rootView.findViewById(R.id.zxing_barcode_scanner);
+        compoundBarcodeView = (CompoundBarcodeView)rootView.findViewById(R.id.zxing_barcode_scanner);
         compoundBarcodeView.decodeContinuous(barcodeCallback);
-
         return rootView;
     }
 
@@ -47,7 +62,18 @@ public class ScanFragment extends BaseFragment {
 
         @Override
         public void barcodeResult(BarcodeResult barcodeResult) {
-            Toast.makeText(getActivity().getBaseContext(),"Hello",Toast.LENGTH_SHORT);
+            compoundBarcodeView.pause();
+            for (RoomInformation roomInformation : MainActivity.roomResponse.getResults()) {
+                if(roomInformation.getBarcode().equals(barcodeResult.toString())){
+                       if(roomInformation.isUsing()){
+                           Toast.makeText(context,"Sorry, the room you choose is using, please pick another one",Toast.LENGTH_SHORT).show();
+                           compoundBarcodeView.resume();
+                       }else {
+                           setTheRoomStatusToBeTrue(roomInformation.getObjectId());
+                           Toast.makeText(context,"Update room status success",Toast.LENGTH_SHORT).show();
+                       }
+                }
+            }
         }
 
         @Override
@@ -56,9 +82,34 @@ public class ScanFragment extends BaseFragment {
         }
     };
 
+
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        captureManager.onSaveInstanceState(outState);
+
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        compoundBarcodeView.resume();
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        compoundBarcodeView.pause();
+    }
+
+    public void onMainEventThread(RoomResponse roomResponse){
+        MainActivity.roomResponse = roomResponse;
+    }
+
+    public void setTheRoomStatusToBeTrue(String objectID){
+        RoomStatusUpdate roomStatusUpdate = new RoomStatusUpdate(true);
+        DatabaseOperation.updateRoomStatus(objectID,roomStatusUpdate);
+    }
+
+
 }

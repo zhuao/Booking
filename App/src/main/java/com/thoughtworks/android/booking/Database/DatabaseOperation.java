@@ -2,11 +2,15 @@ package com.thoughtworks.android.booking.Database;
 
 import android.util.Log;
 
+import com.thoughtworks.android.booking.RoomStatusUpdate;
+import com.thoughtworks.android.booking.Server.HttpCallBack;
 import com.thoughtworks.android.booking.Server.HttpService;
 import com.thoughtworks.android.booking.Server.Response.BookResponse;
 import com.thoughtworks.android.booking.Server.Response.RoomResponse;
 import com.thoughtworks.android.booking.Server.Response.UserResponse;
 import com.thoughtworks.android.booking.Server.ServerInterface;
+
+import org.json.JSONObject;
 
 import de.greenrobot.event.EventBus;
 
@@ -20,6 +24,7 @@ import retrofit.client.Response;
  */
 public class DatabaseOperation {
     private static ServerInterface httpInterface;
+    private static final String TAG = "HttpOperation";
 
     public DatabaseOperation() {
         this.httpInterface = new HttpService().build();
@@ -30,14 +35,29 @@ public class DatabaseOperation {
              @Override
              public void success(RoomResponse roomResponse, Response response) {
                  EventBus.getDefault().post(roomResponse);
-                 Log.d("operation", roomResponse.toString());
+                 Log.d(TAG, roomResponse.toString());
              }
 
              @Override
              public void failure(RetrofitError error) {
-                 Log.d("HttpOperation",error.getMessage());
+                 Log.d(TAG,error.getMessage());
              }
          });
+    }
+
+    public static void updateRoomStatus(String objectID,RoomStatusUpdate status){
+        httpInterface.updateRoomStatus(objectID, status, new Callback<HttpCallBack>() {
+            @Override
+            public void success(HttpCallBack httpCallBack, Response response) {
+                 Log.d(TAG,"updtae room status success");
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Log.d(TAG,"updtae room status fails");
+
+            }
+        });
     }
 
     public static void getBookingInformation(){
@@ -49,7 +69,7 @@ public class DatabaseOperation {
 
             @Override
             public void failure(RetrofitError error) {
-                Log.d("HttpOperation", "Get Booking Information Error");
+                Log.d(TAG, "Get Booking Information Error");
             }
         });
     }
@@ -63,7 +83,7 @@ public class DatabaseOperation {
 
             @Override
             public void failure(RetrofitError error) {
-                Log.d("HttpOperation", "Get User Information Error");
+                Log.d(TAG, "Get User Information Error");
             }
         });
     }
@@ -72,12 +92,12 @@ public class DatabaseOperation {
         httpInterface.deleteSignleBookingInformation(objectID, new Callback<BookResponse>() {
             @Override
             public void success(BookResponse bookResponse, Response response) {
-                Log.d("HttpOperation", "Delete booking information success");
+                Log.d(TAG, "Delete booking information success");
             }
 
             @Override
             public void failure(RetrofitError error) {
-                Log.d("HttpOperation", "Delete booking information error");
+                Log.d(TAG, "Delete booking information error");
             }
         });
     }

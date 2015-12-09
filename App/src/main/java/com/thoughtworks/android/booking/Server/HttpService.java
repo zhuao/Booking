@@ -1,7 +1,11 @@
 package com.thoughtworks.android.booking.Server;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
+import retrofit.converter.GsonConverter;
 
 /**
  * Created by hxxu on 11/16/15.
@@ -20,11 +24,15 @@ public class HttpService {
     }
 
     private RestAdapter buildRestAdapter(){
+        Gson gson = new GsonBuilder()
+                .setDateFormat("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSS'Z'")
+                .create();
+
         RestAdapter.Builder builder = new RestAdapter.Builder();
         builder.setEndpoint("https://api.parse.com");
         builder.setLogLevel(RestAdapter.LogLevel.FULL);
+        builder.setConverter(new GsonConverter(gson));
         builder.setRequestInterceptor(createRequestInterceptor());
-
         return builder.build();
     }
 

@@ -3,23 +3,34 @@ package com.thoughtworks.android.booking;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.thoughtworks.android.booking.AppContent.StringContent;
+import com.thoughtworks.android.booking.Database.DatabaseOperation;
 import com.thoughtworks.android.booking.Fragment.RoomInformationFragment;
 import com.thoughtworks.android.booking.Fragment.ScanFragment;
+import com.thoughtworks.android.booking.Server.Response.RoomResponse;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import me.zhuao.android.sketch.activity.DrawerLayoutActivity;
 
 public class MainActivity extends DrawerLayoutActivity {
 
+    public static RoomResponse roomResponse = new RoomResponse();
+    private Timer requestTimer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_fragment_layout);
-        startFragment(new RoomInformationFragment());
+        requestTimer = new Timer();
+        requestTimer.schedule(timer, 0l, StringContent.REFRESH_ROOM_INFORMATION_TIME);
+        startFragment(new RoomInformationFragment(),"RoomList");
     }
 
     @Override
@@ -32,9 +43,10 @@ public class MainActivity extends DrawerLayoutActivity {
         return false;
     }
 
-    public void startFragment(Fragment fragment){
+    public void startFragment(Fragment fragment,String tag){
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.main_fragment_content,fragment);
+        fragmentTransaction.replace(R.id.main_fragment_content, fragment);
+        fragmentTransaction.addToBackStack(tag);
         fragmentTransaction.commit();
     }
 
@@ -50,10 +62,35 @@ public class MainActivity extends DrawerLayoutActivity {
         switch (item.getItemId())
         {
             case R.id.barcode_scan:
-                startFragment(new ScanFragment());
+                startFragment(new ScanFragment(this),"Scan");
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private TimerTask timer = new TimerTask(){
+        @Override
+        public void run() {
+            new DatabaseOperation().getRoomInformation();
+        }
+    };
+
+    @Override
+    protected void onStop() {
+        requestTimer.cancel();
+        super.onStop();
+    }
+
+    @Override
+    public void onBackPressed() {
+        int number = getSupportFragmentManager().getBackStackEntryCount();
+        if(getSupportFragmentManager().getBackStackEntryCount() > 1) {
+            getSupportFragmentManager().popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+        }else {
+            super.onBackPressed();
+        }
+
     }
 }

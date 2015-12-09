@@ -1,6 +1,7 @@
 package com.thoughtworks.android.booking.Server;
 
 
+import com.thoughtworks.android.booking.RoomStatusUpdate;
 import com.thoughtworks.android.booking.Server.Response.BookResponse;
 import com.thoughtworks.android.booking.Server.Response.RoomResponse;
 import com.thoughtworks.android.booking.Server.Response.UserResponse;
@@ -8,6 +9,7 @@ import com.thoughtworks.android.booking.Server.Response.UserResponse;
 import org.json.JSONObject;
 
 import retrofit.Callback;
+import retrofit.http.Body;
 import retrofit.http.DELETE;
 import retrofit.http.GET;
 import retrofit.http.PUT;
@@ -29,4 +31,7 @@ public interface ServerInterface  {
 
     @DELETE("/1/classes/Book/{param}")
     void deleteSignleBookingInformation(@Path("param")String objectID,Callback<BookResponse> callback);
+
+    @PUT("/1/classes/Room/{param}")
+    void updateRoomStatus(@Path("param")String objectID, @Body RoomStatusUpdate status, Callback<HttpCallBack> callback);
 }

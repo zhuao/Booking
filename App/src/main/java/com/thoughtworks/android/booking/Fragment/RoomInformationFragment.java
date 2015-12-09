@@ -10,12 +10,9 @@ import android.view.ViewGroup;
 
 import com.thoughtworks.android.booking.Adapter.RoomInformationAdapter;
 import com.thoughtworks.android.booking.AppContent.StringContent;
-import com.thoughtworks.android.booking.Database.DatabaseOperation;
+
 import com.thoughtworks.android.booking.R;
 import com.thoughtworks.android.booking.Server.Response.RoomResponse;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 import de.greenrobot.event.EventBus;
 
@@ -27,6 +24,7 @@ public class RoomInformationFragment extends BaseFragment{
     private View rootView;
     private RecyclerView roomRecyclerView;
     private RoomInformationAdapter roomInformationAdapter;
+
 
     public RoomInformationFragment() {
         this.roomInformationAdapter = null;
@@ -41,7 +39,7 @@ public class RoomInformationFragment extends BaseFragment{
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        new Timer().schedule(timer,0l,StringContent.REFRESH_ROOM_INFORMATION_TIME);
+
 
     }
 
@@ -91,10 +89,5 @@ public class RoomInformationFragment extends BaseFragment{
         getActivity().findViewById(R.id.progress_spinner).setVisibility(View.INVISIBLE);
     }
 
-    private TimerTask timer = new TimerTask(){
-        @Override
-        public void run() {
-            new DatabaseOperation().getRoomInformation();
-        }
-    };
+
 }
