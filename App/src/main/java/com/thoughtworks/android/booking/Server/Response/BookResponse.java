@@ -25,10 +25,10 @@ public class BookResponse {
         }
     }
 
-    public String getBookingIDAccordingToTheTime(String roomName, Date startTime, Date endTime)
+    public String getBookingIDAccordingToTheTime(String roomId, Date startTime, Date endTime)
     {
         for (BookInformation bookInformation : results) {
-            if (bookInformation.getName() == roomName && bookInformation.getStartTime() == startTime
+            if (bookInformation.getRoomId().equals(roomId) && bookInformation.getStartTime() == startTime
                     && bookInformation.getEndTime() == endTime) {
                 return bookInformation.getObjectId();
             } else {

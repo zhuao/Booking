@@ -9,27 +9,13 @@ import java.sql.Date;
  */
 public class BookInformation implements Serializable{
     private String objectId;
-    private String name;
-    private Date createdAt;
-    private Date updatedAt;
     private Date startTime;
     private Date endTime;
-    private Number userID;
+    private String deviceId;
+    private String roomId;
 
     public String getObjectId() {
         return objectId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
     }
 
     public Date getStartTime() {
@@ -40,7 +26,11 @@ public class BookInformation implements Serializable{
         return endTime;
     }
 
-    public Number getUserID() {
-        return userID;
+    public String getRoomId() {
+        return roomId;
+    }
+
+    public String getDeviceId() {
+        return deviceId;
     }
 }
