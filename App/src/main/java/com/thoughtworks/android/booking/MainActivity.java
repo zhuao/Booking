@@ -14,6 +14,7 @@ import com.thoughtworks.android.booking.AppContent.StringContent;
 import com.thoughtworks.android.booking.Database.DatabaseOperation;
 import com.thoughtworks.android.booking.Fragment.RoomInformationFragment;
 import com.thoughtworks.android.booking.Fragment.ScanFragment;
+import com.thoughtworks.android.booking.Server.Response.BookResponse;
 import com.thoughtworks.android.booking.Server.Response.RoomResponse;
 
 import java.util.Timer;
@@ -24,11 +25,13 @@ import me.zhuao.android.sketch.activity.DrawerLayoutActivity;
 public class MainActivity extends DrawerLayoutActivity {
 
     public static RoomResponse roomResponse = new RoomResponse();
+    public static BookResponse bookResponse = new BookResponse();
     private Timer requestTimer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_fragment_layout);
+        new DatabaseOperation().getRoomInformation();
         requestTimer = new Timer();
         requestTimer.schedule(timer, 0l, StringContent.REFRESH_ROOM_INFORMATION_TIME);
         startFragment(new RoomInformationFragment(),"RoomList");
@@ -73,7 +76,7 @@ public class MainActivity extends DrawerLayoutActivity {
     private TimerTask timer = new TimerTask(){
         @Override
         public void run() {
-            new DatabaseOperation().getRoomInformation();
+           new DatabaseOperation().getBookingInformation();
         }
     };
 
@@ -85,7 +88,6 @@ public class MainActivity extends DrawerLayoutActivity {
 
     @Override
     public void onBackPressed() {
-        int number = getFragmentManager().getBackStackEntryCount();
         if(getFragmentManager().getBackStackEntryCount() > 1) {
             getFragmentManager().popBackStackImmediate();
             hideProgressBar();
@@ -100,4 +102,6 @@ public class MainActivity extends DrawerLayoutActivity {
     public void hideProgressBar(){
         this.findViewById(R.id.progress_spinner).setVisibility(View.INVISIBLE);
     }
+
+
 }

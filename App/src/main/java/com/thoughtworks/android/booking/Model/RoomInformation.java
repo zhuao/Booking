@@ -13,8 +13,6 @@ import java.util.Objects;
 public class RoomInformation implements Serializable {
     private  String objectId;
     private  String barcode;
-//    private Date createdAt;
-//    private Date updatedAt;
     private String name;
     private boolean isUsing;
     private Number content;
@@ -28,14 +26,6 @@ public class RoomInformation implements Serializable {
         return barcode;
     }
 
-//    public Date getCreatedAt() {
-//        return createdAt;
-//    }
-//
-//    public Date getUpdatedAt() {
-//        return updatedAt;
-//    }
-
     public String getName() {
         return name;
     }
@@ -47,7 +37,6 @@ public class RoomInformation implements Serializable {
     public Object getMaterial() {
         return material;
     }
-
 
 
     public boolean isUsing() {

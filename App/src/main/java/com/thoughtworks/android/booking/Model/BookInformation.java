@@ -1,7 +1,8 @@
 package com.thoughtworks.android.booking.Model;
-
 import java.io.Serializable;
-import java.sql.Date;
+import java.text.ParseException;
+import java.util.Date;
+import org.joda.time.DateTime;
 
 
 /**
@@ -9,21 +10,28 @@ import java.sql.Date;
  */
 public class BookInformation implements Serializable{
     private String objectId;
-    private Date startTime;
-    private Date endTime;
+    private MyTime startTime;
+    private MyTime endTime;
+    private String barcode;
     private String deviceId;
     private String roomId;
+
+
+
+    public String getBarcode() {
+        return barcode;
+    }
 
     public String getObjectId() {
         return objectId;
     }
 
-    public Date getStartTime() {
-        return startTime;
+    public DateTime getStartTime() throws ParseException {
+        return startTime.getIso();
     }
 
-    public Date getEndTime() {
-        return endTime;
+    public DateTime getEndTime() throws ParseException {
+        return endTime.getIso();
     }
 
     public String getRoomId() {

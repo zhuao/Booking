@@ -67,7 +67,7 @@ public class DatabaseOperation {
 
             @Override
             public void failure(RetrofitError error) {
-                Log.d(TAG, "Get Booking Information Error");
+                Log.d(TAG, error.getMessage());
             }
         });
     }

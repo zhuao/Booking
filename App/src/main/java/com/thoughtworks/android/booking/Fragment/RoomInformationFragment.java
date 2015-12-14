@@ -13,6 +13,7 @@ import com.thoughtworks.android.booking.AppContent.StringContent;
 
 import com.thoughtworks.android.booking.MainActivity;
 import com.thoughtworks.android.booking.R;
+import com.thoughtworks.android.booking.Server.Response.BookResponse;
 import com.thoughtworks.android.booking.Server.Response.RoomResponse;
 
 import de.greenrobot.event.EventBus;
@@ -65,11 +66,15 @@ public class RoomInformationFragment extends BaseFragment{
         super.onStop();
     }
 
-    public void onEventMainThread(RoomResponse roomResponse){
-        roomInformationAdapter.addRoomResponseToAdapter(roomResponse);
+    public void onEventMainThread(BookResponse bookResponse){
+        roomInformationAdapter.addRoomResponseToAdapter(bookResponse);
         roomInformationAdapter.notifyDataSetChanged();
         hideProgressBar();
 
+    }
+
+    public void onEventMainThread(RoomResponse roomResponse){
+       MainActivity.roomResponse = roomResponse;
     }
 
     @Override

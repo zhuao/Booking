@@ -12,9 +12,14 @@ import android.widget.AdapterView;
 import android.widget.TextView;
 
 import com.thoughtworks.android.booking.MainActivity;
+import com.thoughtworks.android.booking.Model.BookInformation;
 import com.thoughtworks.android.booking.R;
-import com.thoughtworks.android.booking.Server.Response.RoomResponse;
+import com.thoughtworks.android.booking.Server.Response.BookResponse;
 
+import org.joda.time.DateTime;
+
+import java.text.ParseException;
+import java.util.Date;
 
 
 /**
@@ -37,7 +42,6 @@ public class RoomInformationAdapter extends RecyclerView.Adapter<RoomInformation
 
         @Override
         public void onClick(View v) {
-//            onItemClickListener.onItemClick(getLayoutPosition(),v);
         }
     }
 
@@ -53,13 +57,34 @@ public class RoomInformationAdapter extends RecyclerView.Adapter<RoomInformation
     public void onBindViewHolder(ViewHolder holder, int position) {
         TextView textView = (TextView)holder.view.findViewById(R.id.room_name_text);
         CardView cardView = (CardView)holder.view.findViewById(R.id.room_list_card_view);
-        if(MainActivity.roomResponse.getResults().get(position).isUsing()){
-          cardView.setCardBackgroundColor(context.getResources().getColor(R.color.red));
-            textView.setText(MainActivity.roomResponse.getResults().get(position).getName() + "(有人)");
-        }else {
-            cardView.setCardBackgroundColor(context.getResources().getColor(R.color.green));
-            textView.setText(MainActivity.roomResponse.getResults().get(position).getName() + "(无人)");
+        String barcode = MainActivity.roomResponse.getResults().get(position).getBarcode();
+        try {
+            if(isRoomUsingByCheckBookingInformation(MainActivity.roomResponse.getResults().get(position).getBarcode())){
+              cardView.setCardBackgroundColor(context.getResources().getColor(R.color.red));
+                textView.setText(MainActivity.roomResponse.getResults().get(position).getName() + "(有人)");
+            }else {
+                cardView.setCardBackgroundColor(context.getResources().getColor(R.color.green));
+                textView.setText(MainActivity.roomResponse.getResults().get(position).getName() + "(无人)");
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
+    }
+
+    private boolean isRoomUsingByCheckBookingInformation(String barcode) throws ParseException {
+        DateTime currentTime = DateTime.now();
+        for (BookInformation bookInformation : MainActivity.bookResponse.getResults()
+                ) {
+            DateTime startTime = bookInformation.getStartTime();
+            DateTime endTime = bookInformation.getEndTime();
+            if(bookInformation.getBarcode().equals(barcode) &&
+                    currentTime.isBefore(bookInformation.getEndTime()) &&
+                    currentTime.isAfter(bookInformation.getStartTime())){
+                return true;
+            }
+
+        }
+        return false;
     }
 
 
@@ -68,8 +93,8 @@ public class RoomInformationAdapter extends RecyclerView.Adapter<RoomInformation
         return MainActivity.roomResponse.getResults().size();
     }
 
-    public void addRoomResponseToAdapter(RoomResponse roomResponse){
-        MainActivity.roomResponse = roomResponse;
+    public void addRoomResponseToAdapter(BookResponse bookResponse){
+        MainActivity.bookResponse = bookResponse;
         notifyDataSetChanged();
     }
 
