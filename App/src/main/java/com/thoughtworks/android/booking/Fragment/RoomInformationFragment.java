@@ -1,5 +1,8 @@
 package com.thoughtworks.android.booking.Fragment;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +18,8 @@ import com.thoughtworks.android.booking.MainActivity;
 import com.thoughtworks.android.booking.R;
 import com.thoughtworks.android.booking.Server.Response.BookResponse;
 import com.thoughtworks.android.booking.Server.Response.RoomResponse;
+
+import java.util.MissingFormatArgumentException;
 
 import de.greenrobot.event.EventBus;
 
@@ -91,7 +96,23 @@ public class RoomInformationFragment extends BaseFragment{
         roomRecyclerView.setHasFixedSize(true);
         roomRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getBaseContext()));
         roomInformationAdapter = new RoomInformationAdapter(getActivity());
+        roomInformationAdapter.setOnItemClickListener(new RoomInformationAdapter.OnItemClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Bundle bundle = new Bundle();
+                bundle.putString("name", MainActivity.roomResponse.getResults().get(position).getName());
+                bundle.putString("barcode", MainActivity.roomResponse.getResults().get(position).getBarcode());
+
+                Fragment bookingFragment = new BookingFragment(getActivity());
+                bookingFragment.setArguments(bundle);
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.main_fragment_content,bookingFragment);
+                fragmentTransaction.addToBackStack("RoomList");
+                fragmentTransaction.commit();
+            }
+        });
         roomRecyclerView.setAdapter(roomInformationAdapter);
+
         return rootView;
     }
 

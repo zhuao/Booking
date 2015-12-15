@@ -25,7 +25,7 @@ public class HttpService {
 
     private RestAdapter buildRestAdapter(){
         Gson gson = new GsonBuilder()
-                .setDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSS'Z'")
+                .setDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSSZ")
                 .create();
         RestAdapter.Builder builder = new RestAdapter.Builder();
         builder.setEndpoint("https://api.parse.com");

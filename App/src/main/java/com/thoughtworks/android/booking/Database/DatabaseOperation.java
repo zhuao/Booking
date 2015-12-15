@@ -2,6 +2,7 @@ package com.thoughtworks.android.booking.Database;
 
 import android.util.Log;
 
+import com.thoughtworks.android.booking.Model.BookInformation;
 import com.thoughtworks.android.booking.Server.RequestBody.RoomStatusUpdate;
 import com.thoughtworks.android.booking.Server.HttpCallBack;
 import com.thoughtworks.android.booking.Server.HttpService;
@@ -47,12 +48,12 @@ public class DatabaseOperation {
         httpInterface.updateRoomStatus(objectID, status, new Callback<HttpCallBack>() {
             @Override
             public void success(HttpCallBack httpCallBack, Response response) {
-                 Log.d(TAG,"updtae room status success");
+                Log.d(TAG, "updtae room status success");
             }
 
             @Override
             public void failure(RetrofitError error) {
-                Log.d(TAG,"updtae room status fails");
+                Log.d(TAG, "updtae room status fails");
 
             }
         });
@@ -98,5 +99,20 @@ public class DatabaseOperation {
                 Log.d(TAG, "Delete booking information error");
             }
         });
+    }
+
+    public static void bookRoom(BookInformation bookInformation){
+        httpInterface.bookRoom(bookInformation, new Callback<HttpCallBack>() {
+            @Override
+            public void success(HttpCallBack httpCallBack, Response response) {
+                Log.d(TAG, "Book room success");
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Log.d(TAG, "Book room failed");
+            }
+        });
+
     }
 }
