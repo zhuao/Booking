@@ -125,7 +125,7 @@ public class ScanFragment extends BaseFragment {
     }
 
     private boolean isRoomUsingByCheckBookingInformation(String barcode) throws ParseException {
-        DateTime currentTime = new DateTime(DateTimeZone.forID("PRC"));
+        DateTime currentTime = new DateTime(DateTimeZone.forID(StringContent.TIME_ZONE_OF_CHINA));
 
         for (BookInformation bookInformation : MainActivity.bookResponse.getResults()
                 ) {
@@ -142,7 +142,7 @@ public class ScanFragment extends BaseFragment {
     }
 
     private void bookTheRoomWithSpecificDevice(String barcode){
-        DateTime currentTime = new DateTime(DateTimeZone.forID("PRC"));
+        DateTime currentTime = new DateTime(DateTimeZone.forID(StringContent.TIME_ZONE_OF_CHINA));
         DateTime thirtyMinuteLater = currentTime.plusMinutes(30);
         MyTime startTime = new MyTime();
         startTime.setIso(currentTime.toString());

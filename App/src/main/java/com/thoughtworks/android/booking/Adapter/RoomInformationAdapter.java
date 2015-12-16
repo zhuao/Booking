@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.TextView;
 
+import com.thoughtworks.android.booking.AppContent.StringContent;
 import com.thoughtworks.android.booking.Fragment.BookingFragment;
 import com.thoughtworks.android.booking.MainActivity;
 import com.thoughtworks.android.booking.Model.BookInformation;
@@ -73,7 +74,6 @@ public class RoomInformationAdapter extends RecyclerView.Adapter<RoomInformation
     public void onBindViewHolder(ViewHolder holder, int position) {
         TextView textView = (TextView)holder.view.findViewById(R.id.room_name_text);
         CardView cardView = (CardView)holder.view.findViewById(R.id.room_list_card_view);
-        String barcode = MainActivity.roomResponse.getResults().get(position).getBarcode();
         try {
             if(isRoomUsingByCheckBookingInformation(MainActivity.roomResponse.getResults().get(position).getBarcode())){
               cardView.setCardBackgroundColor(context.getResources().getColor(R.color.red));
@@ -88,7 +88,7 @@ public class RoomInformationAdapter extends RecyclerView.Adapter<RoomInformation
     }
 
     private boolean isRoomUsingByCheckBookingInformation(String barcode) throws ParseException {
-       DateTime currentTime = new DateTime(DateTimeZone.forID("PRC"));
+       DateTime currentTime = new DateTime(DateTimeZone.forID(StringContent.TIME_ZONE_OF_CHINA));
 
         for (BookInformation bookInformation : MainActivity.bookResponse.getResults()
                 ) {

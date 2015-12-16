@@ -1,6 +1,8 @@
 package com.thoughtworks.android.booking.Model;
 
 
+import com.thoughtworks.android.booking.AppContent.StringContent;
+
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
@@ -19,7 +21,7 @@ public class MyTime implements Serializable {
     private String iso;
     private String __type;
     public DateTime getIso() throws ParseException {
-        return new DateTime(iso, DateTimeZone.forID("PRC"));
+        return new DateTime(iso, DateTimeZone.forID(StringContent.TIME_ZONE_OF_CHINA));
     }
 
     public void setIso(String iso) {
