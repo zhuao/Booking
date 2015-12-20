@@ -1,7 +1,6 @@
 package com.thoughtworks.android.booking.Model;
 import java.io.Serializable;
-import java.text.ParseException;
-import java.util.Date;
+
 import org.joda.time.DateTime;
 
 
@@ -10,12 +9,12 @@ import org.joda.time.DateTime;
  */
 public class BookInformation implements Serializable{
     private String objectId;
-    private MyTime startTime;
-    private MyTime endTime;
+    private ParseTime startTime;
+    private ParseTime endTime;
     private String barcode;
     private String deviceId;
     private String roomId;
-
+    private boolean cancelled = false;
 
 
     public String getBarcode() {
@@ -26,12 +25,12 @@ public class BookInformation implements Serializable{
         return objectId;
     }
 
-    public DateTime getStartTime() throws ParseException {
-        return startTime.getIso();
+    public DateTime getStartTime() {
+        return startTime.toDateTime();
     }
 
-    public DateTime getEndTime() throws ParseException {
-        return endTime.getIso();
+    public DateTime getEndTime() {
+        return endTime.toDateTime();
     }
 
     public String getRoomId() {
@@ -46,11 +45,11 @@ public class BookInformation implements Serializable{
         this.objectId = objectId;
     }
 
-    public void setStartTime(MyTime startTime) {
+    public void setStartTime(ParseTime startTime) {
         this.startTime = startTime;
     }
 
-    public void setEndTime(MyTime endTime) {
+    public void setEndTime(ParseTime endTime) {
         this.endTime = endTime;
     }
 
@@ -64,5 +63,9 @@ public class BookInformation implements Serializable{
 
     public void setRoomId(String roomId) {
         this.roomId = roomId;
+    }
+
+    public boolean isCancelled() {
+        return cancelled;
     }
 }

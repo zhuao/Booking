@@ -17,10 +17,10 @@ import java.util.TimeZone;
 /**
  * Created by hxxu on 12/14/15.
  */
-public class MyTime implements Serializable {
+public class ParseTime implements Serializable {
     private String iso;
     private String __type;
-    public DateTime getIso() throws ParseException {
+    public DateTime toDateTime() {
         return new DateTime(iso, DateTimeZone.forID(StringContent.TIME_ZONE_OF_CHINA));
     }
 

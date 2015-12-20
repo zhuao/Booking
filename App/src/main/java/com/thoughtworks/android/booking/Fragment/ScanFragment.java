@@ -17,7 +17,7 @@ import com.thoughtworks.android.booking.AppContent.StringContent;
 import com.thoughtworks.android.booking.Database.DatabaseOperation;
 import com.thoughtworks.android.booking.MainActivity;
 import com.thoughtworks.android.booking.Model.BookInformation;
-import com.thoughtworks.android.booking.Model.MyTime;
+import com.thoughtworks.android.booking.Model.ParseTime;
 import com.thoughtworks.android.booking.Model.RoomInformation;
 import com.thoughtworks.android.booking.R;
 
@@ -144,10 +144,10 @@ public class ScanFragment extends BaseFragment {
     private void bookTheRoomWithSpecificDevice(String barcode){
         DateTime currentTime = new DateTime(DateTimeZone.forID(StringContent.TIME_ZONE_OF_CHINA));
         DateTime thirtyMinuteLater = currentTime.plusMinutes(30);
-        MyTime startTime = new MyTime();
+        ParseTime startTime = new ParseTime();
         startTime.setIso(currentTime.toString());
         startTime.set__type("Date");
-        MyTime endTime = new MyTime();
+        ParseTime endTime = new ParseTime();
         endTime.setIso(thirtyMinuteLater.toString());
         endTime.set__type("Date");
 

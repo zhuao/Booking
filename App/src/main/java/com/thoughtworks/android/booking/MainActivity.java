@@ -3,12 +3,10 @@ package com.thoughtworks.android.booking;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.thoughtworks.android.booking.AppContent.StringContent;
 import com.thoughtworks.android.booking.Database.DatabaseOperation;

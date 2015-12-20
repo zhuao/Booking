@@ -59,18 +59,9 @@ public class DatabaseOperation {
         });
     }
 
-    public static void getBookingInformation(){
-        httpInterface.getBookingData(new Callback<BookResponse>() {
-            @Override
-            public void success(BookResponse bookResponse, Response response) {
-                EventBus.getDefault().post(bookResponse);
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                Log.d(TAG, error.getMessage());
-            }
-        });
+    public static BookResponse getBookingInformation(){
+        //TODO: add currentTime and deviceId as parameter
+        return httpInterface.getBookingData();
     }
 
     public static void getUserInformation(){
