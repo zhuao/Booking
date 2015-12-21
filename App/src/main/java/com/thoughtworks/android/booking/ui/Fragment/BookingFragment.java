@@ -1,4 +1,4 @@
-package com.thoughtworks.android.booking.Fragment;
+package com.thoughtworks.android.booking.ui.Fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,10 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.thoughtworks.android.booking.MainActivity;
+import com.thoughtworks.android.booking.ui.MainActivity;
 import com.thoughtworks.android.booking.R;
-
-import java.util.zip.Inflater;
 
 /**
  * Created by hxxu on 12/15/15.

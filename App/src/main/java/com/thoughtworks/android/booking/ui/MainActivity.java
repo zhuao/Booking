@@ -1,4 +1,4 @@
-package com.thoughtworks.android.booking;
+package com.thoughtworks.android.booking.ui;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -8,12 +8,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.thoughtworks.android.booking.AppContent.StringContent;
-import com.thoughtworks.android.booking.Database.DatabaseOperation;
-import com.thoughtworks.android.booking.Fragment.RoomInformationFragment;
-import com.thoughtworks.android.booking.Fragment.ScanFragment;
-import com.thoughtworks.android.booking.Server.Response.BookResponse;
-import com.thoughtworks.android.booking.Server.Response.RoomResponse;
+import com.thoughtworks.android.booking.StringConstant;
+import com.thoughtworks.android.booking.R;
+import com.thoughtworks.android.booking.biz.DatabaseOperation;
+import com.thoughtworks.android.booking.ui.Fragment.RoomInformationFragment;
+import com.thoughtworks.android.booking.ui.Fragment.ScanFragment;
+import com.thoughtworks.android.booking.persistence.server.Response.BookResponse;
+import com.thoughtworks.android.booking.persistence.server.Response.RoomResponse;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -31,7 +32,7 @@ public class MainActivity extends DrawerLayoutActivity {
         setContentView(R.layout.main_fragment_layout);
         new DatabaseOperation().getRoomInformation();
         requestTimer = new Timer();
-        requestTimer.schedule(timer, 0l, StringContent.REFRESH_ROOM_INFORMATION_TIME);
+        requestTimer.schedule(timer, 0l, StringConstant.REFRESH_ROOM_INFORMATION_TIME);
         startFragment(new RoomInformationFragment(),"RoomList");
     }
 

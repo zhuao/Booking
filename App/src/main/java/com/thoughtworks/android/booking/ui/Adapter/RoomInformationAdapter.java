@@ -1,8 +1,6 @@
-package com.thoughtworks.android.booking.Adapter;
+package com.thoughtworks.android.booking.ui.Adapter;
 
-import android.app.Fragment;
 import android.content.Context;
-import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,22 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.AdapterView;
 import android.widget.TextView;
 
-import com.thoughtworks.android.booking.AppContent.StringContent;
-import com.thoughtworks.android.booking.Fragment.BookingFragment;
-import com.thoughtworks.android.booking.MainActivity;
+import com.thoughtworks.android.booking.StringConstant;
+import com.thoughtworks.android.booking.ui.MainActivity;
 import com.thoughtworks.android.booking.Model.BookInformation;
 import com.thoughtworks.android.booking.R;
-import com.thoughtworks.android.booking.Server.Response.BookResponse;
+import com.thoughtworks.android.booking.persistence.server.Response.BookResponse;
 
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
-import org.joda.time.LocalTime;
 
 import java.text.ParseException;
-import java.util.TimeZone;
 
 
 /**
@@ -88,7 +82,7 @@ public class RoomInformationAdapter extends RecyclerView.Adapter<RoomInformation
     }
 
     private boolean isRoomUsingByCheckBookingInformation(String barcode) throws ParseException {
-       DateTime currentTime = new DateTime(DateTimeZone.forID(StringContent.TIME_ZONE_OF_CHINA));
+       DateTime currentTime = new DateTime(DateTimeZone.forID(StringConstant.TIME_ZONE_OF_CHINA));
 
         for (BookInformation bookInformation : MainActivity.bookResponse.getResults()
                 ) {

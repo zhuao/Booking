@@ -1,10 +1,6 @@
 package com.thoughtworks.android.booking.Model;
 
-import com.thoughtworks.android.booking.Server.Response.BookResponse;
-
 import java.io.Serializable;
-import java.sql.Date;
-import java.util.Objects;
 
 
 /**

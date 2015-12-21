@@ -19,7 +19,7 @@
         <!--
             Sets the activity's name and label
          -->
-        <activity android:name=".MainActivity"
+        <activity android:name=".ui.MainActivity"
             android:label="@string/app_name">
             <!--
                     This activity responds to MAIN and LAUNCHER intents
@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".Service.ReminderNotificationService"
+        <service android:name=".biz.Service.ReminderNotificationService"
             android:stopWithTask="true"/>
 
 

@@ -1,4 +1,4 @@
-package com.thoughtworks.android.booking.Server.RequestBody;
+package com.thoughtworks.android.booking.persistence.server.RequestBody;
 
 /**
  * Created by hxxu on 12/9/15.

@@ -1,9 +1,8 @@
-package com.thoughtworks.android.booking.Server.Response;
+package com.thoughtworks.android.booking.persistence.server.Response;
 
 
 import com.thoughtworks.android.booking.Model.BookInformation;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;

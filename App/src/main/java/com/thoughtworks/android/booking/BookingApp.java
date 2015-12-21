@@ -3,7 +3,7 @@ package com.thoughtworks.android.booking;
 import android.app.Application;
 import android.content.Intent;
 
-import com.thoughtworks.android.booking.Service.ReminderNotificationService;
+import com.thoughtworks.android.booking.biz.Service.ReminderNotificationService;
 
 public class BookingApp extends Application {
 

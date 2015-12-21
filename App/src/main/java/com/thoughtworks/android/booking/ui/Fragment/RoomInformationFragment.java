@@ -1,7 +1,6 @@
-package com.thoughtworks.android.booking.Fragment;
+package com.thoughtworks.android.booking.ui.Fragment;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,15 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.thoughtworks.android.booking.Adapter.RoomInformationAdapter;
-import com.thoughtworks.android.booking.AppContent.StringContent;
+import com.thoughtworks.android.booking.ui.Adapter.RoomInformationAdapter;
+import com.thoughtworks.android.booking.StringConstant;
 
-import com.thoughtworks.android.booking.MainActivity;
+import com.thoughtworks.android.booking.ui.MainActivity;
 import com.thoughtworks.android.booking.R;
-import com.thoughtworks.android.booking.Server.Response.BookResponse;
-import com.thoughtworks.android.booking.Server.Response.RoomResponse;
-
-import java.util.MissingFormatArgumentException;
+import com.thoughtworks.android.booking.persistence.server.Response.BookResponse;
+import com.thoughtworks.android.booking.persistence.server.Response.RoomResponse;
 
 import de.greenrobot.event.EventBus;
 
@@ -52,7 +49,7 @@ public class RoomInformationFragment extends BaseFragment{
 
     @Override
     protected String getFragmentTitle() {
-        return StringContent.RROM_LIST_FRAGMENT_TITLE;
+        return StringConstant.ROOM_LIST_FRAGMENT_TITLE;
     }
 
     @Override

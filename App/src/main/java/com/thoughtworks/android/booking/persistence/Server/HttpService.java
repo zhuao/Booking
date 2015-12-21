@@ -1,4 +1,4 @@
-package com.thoughtworks.android.booking.Server;
+package com.thoughtworks.android.booking.persistence.server;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

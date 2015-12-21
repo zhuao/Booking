@@ -1,10 +1,10 @@
-package com.thoughtworks.android.booking.Fragment;
+package com.thoughtworks.android.booking.ui.Fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.View;
 
-import com.thoughtworks.android.booking.MainActivity;
+import com.thoughtworks.android.booking.ui.MainActivity;
 
 /**
  * Created by hxxu on 11/29/15.

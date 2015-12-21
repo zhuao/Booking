@@ -1,14 +1,14 @@
 package com.thoughtworks.android.booking;
 
 import android.content.Intent;
-import android.widget.Button;
+
+import com.thoughtworks.android.booking.ui.MainActivity;
 
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricGradleTestRunner;
-import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowApplication;
 

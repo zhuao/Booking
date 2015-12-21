@@ -1,17 +1,13 @@
 package com.thoughtworks.android.booking.Model;
 
 
-import com.thoughtworks.android.booking.AppContent.StringContent;
+import com.thoughtworks.android.booking.StringConstant;
 
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
 
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.util.Date;
-import java.util.TimeZone;
 
 
 /**
@@ -21,7 +17,7 @@ public class ParseTime implements Serializable {
     private String iso;
     private String __type;
     public DateTime toDateTime() {
-        return new DateTime(iso, DateTimeZone.forID(StringContent.TIME_ZONE_OF_CHINA));
+        return new DateTime(iso, DateTimeZone.forID(StringConstant.TIME_ZONE_OF_CHINA));
     }
 
     public void setIso(String iso) {

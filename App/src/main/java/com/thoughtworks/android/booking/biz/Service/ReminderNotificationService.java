@@ -1,19 +1,17 @@
-package com.thoughtworks.android.booking.Service;
+package com.thoughtworks.android.booking.biz.Service;
 
 import android.app.IntentService;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.TaskStackBuilder;
 import android.telephony.TelephonyManager;
 
-import com.thoughtworks.android.booking.Database.DatabaseOperation;
+import com.thoughtworks.android.booking.biz.DatabaseOperation;
 import com.thoughtworks.android.booking.Model.BookInformation;
-import com.thoughtworks.android.booking.Server.Response.BookResponse;
+import com.thoughtworks.android.booking.persistence.server.Response.BookResponse;
 
 public class ReminderNotificationService extends IntentService {
 
@@ -47,7 +45,7 @@ public class ReminderNotificationService extends IntentService {
     }
 
     private void updateAlarm() {
-        BookResponse bookResponse = DatabaseOperation.getBookingInformation();
+        BookResponse bookResponse = new DatabaseOperation().getBookingInformation();
         if (bookResponse.getResults().isEmpty()) {
             return;
         }

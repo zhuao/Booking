@@ -1,15 +1,15 @@
-package com.thoughtworks.android.booking.Database;
+package com.thoughtworks.android.booking.biz;
 
 import android.util.Log;
 
 import com.thoughtworks.android.booking.Model.BookInformation;
-import com.thoughtworks.android.booking.Server.RequestBody.RoomStatusUpdate;
-import com.thoughtworks.android.booking.Server.HttpCallBack;
-import com.thoughtworks.android.booking.Server.HttpService;
-import com.thoughtworks.android.booking.Server.Response.BookResponse;
-import com.thoughtworks.android.booking.Server.Response.RoomResponse;
-import com.thoughtworks.android.booking.Server.Response.UserResponse;
-import com.thoughtworks.android.booking.Server.ServerInterface;
+import com.thoughtworks.android.booking.persistence.server.RequestBody.RoomStatusUpdate;
+import com.thoughtworks.android.booking.persistence.server.HttpCallBack;
+import com.thoughtworks.android.booking.persistence.server.HttpService;
+import com.thoughtworks.android.booking.persistence.server.Response.BookResponse;
+import com.thoughtworks.android.booking.persistence.server.Response.RoomResponse;
+import com.thoughtworks.android.booking.persistence.server.Response.UserResponse;
+import com.thoughtworks.android.booking.persistence.server.ServerInterface;
 
 import de.greenrobot.event.EventBus;
 
@@ -22,14 +22,17 @@ import retrofit.client.Response;
  * Created by hxxu on 11/3/15.
  */
 public class DatabaseOperation {
+    private static final String TAG = DatabaseOperation.class.getSimpleName();
+
     private static ServerInterface httpInterface;
-    private static final String TAG = "HttpOperation";
 
     public DatabaseOperation() {
-        this.httpInterface = new HttpService().build();
+        if (httpInterface == null) {
+            this.httpInterface = new HttpService().build();
+        }
     }
 
-    public static void getRoomInformation(){
+    public void getRoomInformation(){
          httpInterface.getRoomData(new Callback<RoomResponse>() {
              @Override
              public void success(RoomResponse roomResponse, Response response) {
@@ -44,7 +47,7 @@ public class DatabaseOperation {
          });
     }
 
-    public static void updateRoomStatus(String objectID,RoomStatusUpdate status){
+    public void updateRoomStatus(String objectID,RoomStatusUpdate status){
         httpInterface.updateRoomStatus(objectID, status, new Callback<HttpCallBack>() {
             @Override
             public void success(HttpCallBack httpCallBack, Response response) {
@@ -59,12 +62,12 @@ public class DatabaseOperation {
         });
     }
 
-    public static BookResponse getBookingInformation(){
+    public BookResponse getBookingInformation(){
         //TODO: add currentTime and deviceId as parameter
         return httpInterface.getBookingData();
     }
 
-    public static void getUserInformation(){
+    public void getUserInformation(){
         httpInterface.getUserData(new Callback<UserResponse>() {
             @Override
             public void success(UserResponse userResponse, Response response) {
@@ -78,7 +81,7 @@ public class DatabaseOperation {
         });
     }
 
-    public static void deleteBookingInformationAccordingToTheTime(String objectID){
+    public void deleteBookingInformationAccordingToTheTime(String objectID){
         httpInterface.deleteSignleBookingInformation(objectID, new Callback<BookResponse>() {
             @Override
             public void success(BookResponse bookResponse, Response response) {
@@ -92,7 +95,7 @@ public class DatabaseOperation {
         });
     }
 
-    public static void bookRoom(BookInformation bookInformation){
+    public void bookRoom(BookInformation bookInformation){
         httpInterface.bookRoom(bookInformation, new Callback<HttpCallBack>() {
             @Override
             public void success(HttpCallBack httpCallBack, Response response) {

@@ -1,4 +1,4 @@
-package com.thoughtworks.android.booking.Fragment;
+package com.thoughtworks.android.booking.ui.Fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,9 +13,9 @@ import com.journeyapps.barcodescanner.BarcodeCallback;
 import com.journeyapps.barcodescanner.BarcodeResult;
 
 import com.journeyapps.barcodescanner.CompoundBarcodeView;
-import com.thoughtworks.android.booking.AppContent.StringContent;
-import com.thoughtworks.android.booking.Database.DatabaseOperation;
-import com.thoughtworks.android.booking.MainActivity;
+import com.thoughtworks.android.booking.StringConstant;
+import com.thoughtworks.android.booking.biz.DatabaseOperation;
+import com.thoughtworks.android.booking.ui.MainActivity;
 import com.thoughtworks.android.booking.Model.BookInformation;
 import com.thoughtworks.android.booking.Model.ParseTime;
 import com.thoughtworks.android.booking.Model.RoomInformation;
@@ -45,7 +45,7 @@ public class ScanFragment extends BaseFragment {
 
     @Override
     protected String getFragmentTitle() {
-        return StringContent.SCAN_BARCODE_FRAGMENT_TITLE;
+        return StringConstant.SCAN_BARCODE_FRAGMENT_TITLE;
     }
 
     @Override
@@ -125,7 +125,7 @@ public class ScanFragment extends BaseFragment {
     }
 
     private boolean isRoomUsingByCheckBookingInformation(String barcode) throws ParseException {
-        DateTime currentTime = new DateTime(DateTimeZone.forID(StringContent.TIME_ZONE_OF_CHINA));
+        DateTime currentTime = new DateTime(DateTimeZone.forID(StringConstant.TIME_ZONE_OF_CHINA));
 
         for (BookInformation bookInformation : MainActivity.bookResponse.getResults()
                 ) {
@@ -142,7 +142,7 @@ public class ScanFragment extends BaseFragment {
     }
 
     private void bookTheRoomWithSpecificDevice(String barcode){
-        DateTime currentTime = new DateTime(DateTimeZone.forID(StringContent.TIME_ZONE_OF_CHINA));
+        DateTime currentTime = new DateTime(DateTimeZone.forID(StringConstant.TIME_ZONE_OF_CHINA));
         DateTime thirtyMinuteLater = currentTime.plusMinutes(30);
         ParseTime startTime = new ParseTime();
         startTime.setIso(currentTime.toString());
