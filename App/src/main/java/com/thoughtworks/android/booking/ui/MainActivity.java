@@ -9,8 +9,8 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.thoughtworks.android.booking.R;
-import com.thoughtworks.android.booking.persistence.server.Response.BookResponse;
-import com.thoughtworks.android.booking.persistence.server.Response.RoomResponse;
+import com.thoughtworks.android.booking.persistence.Server.Response.BookResponse;
+import com.thoughtworks.android.booking.persistence.Server.Response.RoomResponse;
 import com.thoughtworks.android.booking.ui.Fragment.RoomInformationFragment;
 import com.thoughtworks.android.booking.ui.Fragment.ScanFragment;
 

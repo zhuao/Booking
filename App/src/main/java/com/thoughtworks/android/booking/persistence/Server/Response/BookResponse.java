@@ -1,4 +1,4 @@
-package com.thoughtworks.android.booking.persistence.server.Response;
+package com.thoughtworks.android.booking.persistence.Server.Response;
 
 
 import com.thoughtworks.android.booking.Model.BookInformation;

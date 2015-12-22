@@ -1,11 +1,12 @@
-package com.thoughtworks.android.booking.persistence.server;
+package com.thoughtworks.android.booking.persistence.Server;
 
 
 import com.thoughtworks.android.booking.Model.BookInformation;
-import com.thoughtworks.android.booking.persistence.server.RequestBody.RoomStatusUpdate;
-import com.thoughtworks.android.booking.persistence.server.Response.BookResponse;
-import com.thoughtworks.android.booking.persistence.server.Response.RoomResponse;
-import com.thoughtworks.android.booking.persistence.server.Response.UserResponse;
+import com.thoughtworks.android.booking.persistence.Server.RequestBody.RoomStatusUpdate;
+import com.thoughtworks.android.booking.persistence.Server.Response.BookResponse;
+import com.thoughtworks.android.booking.persistence.Server.Response.RoomResponse;
+import com.thoughtworks.android.booking.persistence.Server.Response.UserResponse;
+
 
 import retrofit.Callback;
 import retrofit.http.Body;

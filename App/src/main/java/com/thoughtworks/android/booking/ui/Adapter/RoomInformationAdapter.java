@@ -11,10 +11,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.thoughtworks.android.booking.StringConstant;
+import com.thoughtworks.android.booking.persistence.Server.Response.BookResponse;
 import com.thoughtworks.android.booking.ui.MainActivity;
+
 import com.thoughtworks.android.booking.Model.BookInformation;
 import com.thoughtworks.android.booking.R;
-import com.thoughtworks.android.booking.persistence.server.Response.BookResponse;
 
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;

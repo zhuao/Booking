@@ -11,6 +11,7 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:21.0.+'
     compile 'com.journeyapps:zxing-android-embedded:3.0.2@aar'
     compile 'com.google.zxing:core:3.2.0'
+    compile 'com.wdullaer:materialdatetimepicker:2.1.1'
 
     compile 'joda-time:joda-time:2.8.2'
     testCompile 'org.mockito:mockito-all:1.10.19'

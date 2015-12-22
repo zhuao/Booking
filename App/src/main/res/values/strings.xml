@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Booking</string>
+    <string name="booking_text">请选择房间预订时间</string>
+    <string name="booking_button_text">确定预订</string>
 </resources>

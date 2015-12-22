@@ -3,13 +3,13 @@ package com.thoughtworks.android.booking.biz;
 import android.util.Log;
 
 import com.thoughtworks.android.booking.Model.BookInformation;
-import com.thoughtworks.android.booking.persistence.server.RequestBody.RoomStatusUpdate;
-import com.thoughtworks.android.booking.persistence.server.HttpCallBack;
-import com.thoughtworks.android.booking.persistence.server.HttpService;
-import com.thoughtworks.android.booking.persistence.server.Response.BookResponse;
-import com.thoughtworks.android.booking.persistence.server.Response.RoomResponse;
-import com.thoughtworks.android.booking.persistence.server.Response.UserResponse;
-import com.thoughtworks.android.booking.persistence.server.ServerInterface;
+import com.thoughtworks.android.booking.persistence.Server.RequestBody.RoomStatusUpdate;
+import com.thoughtworks.android.booking.persistence.Server.HttpCallBack;
+import com.thoughtworks.android.booking.persistence.Server.HttpService;
+import com.thoughtworks.android.booking.persistence.Server.Response.BookResponse;
+import com.thoughtworks.android.booking.persistence.Server.Response.RoomResponse;
+import com.thoughtworks.android.booking.persistence.Server.Response.UserResponse;
+import com.thoughtworks.android.booking.persistence.Server.ServerInterface;
 
 import de.greenrobot.event.EventBus;
 

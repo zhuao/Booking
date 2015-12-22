@@ -1,14 +1,10 @@
 package com.thoughtworks.android.booking.Model;
 
-
-import com.thoughtworks.android.booking.StringConstant;
-
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-
-
 import java.io.Serializable;
 
+import com.thoughtworks.android.booking.StringConstant;
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 
 /**
  * Created by hxxu on 12/14/15.

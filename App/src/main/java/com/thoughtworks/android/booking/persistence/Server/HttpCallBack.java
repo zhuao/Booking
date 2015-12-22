@@ -1,4 +1,4 @@
-package com.thoughtworks.android.booking.persistence.server;
+package com.thoughtworks.android.booking.persistence.Server;
 
 import android.util.Log;
 
