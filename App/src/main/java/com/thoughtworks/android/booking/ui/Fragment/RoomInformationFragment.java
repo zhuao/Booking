@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.thoughtworks.android.booking.biz.DatabaseOperation;
 import com.thoughtworks.android.booking.ui.Adapter.RoomInformationAdapter;
 import com.thoughtworks.android.booking.StringConstant;
 
@@ -17,6 +18,9 @@ import com.thoughtworks.android.booking.ui.MainActivity;
 import com.thoughtworks.android.booking.R;
 import com.thoughtworks.android.booking.persistence.server.Response.BookResponse;
 import com.thoughtworks.android.booking.persistence.server.Response.RoomResponse;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import de.greenrobot.event.EventBus;
 
@@ -28,6 +32,8 @@ public class RoomInformationFragment extends BaseFragment{
     private View rootView;
     private RecyclerView roomRecyclerView;
     private RoomInformationAdapter roomInformationAdapter;
+
+    private Timer requestTimer;
 
 
     public RoomInformationFragment() {
@@ -41,10 +47,8 @@ public class RoomInformationFragment extends BaseFragment{
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-
-
+        new DatabaseOperation().getRoomInformation();
     }
 
     @Override
@@ -64,19 +68,22 @@ public class RoomInformationFragment extends BaseFragment{
 
     @Override
     public void onStop() {
+        requestTimer.cancel();
         EventBus.getDefault().unregister(this);
         super.onStop();
     }
 
     public void onEventMainThread(BookResponse bookResponse){
+        hideProgressBar();
         roomInformationAdapter.addRoomResponseToAdapter(bookResponse);
         roomInformationAdapter.notifyDataSetChanged();
-        hideProgressBar();
 
     }
 
     public void onEventMainThread(RoomResponse roomResponse){
        MainActivity.roomResponse = roomResponse;
+       requestTimer = new Timer();
+       requestTimer.schedule(timer, 0l, StringConstant.REFRESH_ROOM_INFORMATION_TIME);
     }
 
     @Override
@@ -113,12 +120,20 @@ public class RoomInformationFragment extends BaseFragment{
         return rootView;
     }
 
+    private TimerTask timer = new TimerTask(){
+        @Override
+        public void run() {
+            BookResponse bookingInformation = new DatabaseOperation().getBookingInformation();
+            EventBus.getDefault().post(bookingInformation);
+        }
+    };
+
     public void showProgressBar(){
         getActivity().findViewById(R.id.progress_spinner).setVisibility(View.VISIBLE);
     }
 
     public void hideProgressBar(){
-        getActivity().findViewById(R.id.progress_spinner).setVisibility(View.INVISIBLE);
+        getActivity().findViewById(R.id.progress_spinner).setVisibility(View.GONE);
     }
 
 

@@ -8,16 +8,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.thoughtworks.android.booking.StringConstant;
 import com.thoughtworks.android.booking.R;
-import com.thoughtworks.android.booking.biz.DatabaseOperation;
-import com.thoughtworks.android.booking.ui.Fragment.RoomInformationFragment;
-import com.thoughtworks.android.booking.ui.Fragment.ScanFragment;
 import com.thoughtworks.android.booking.persistence.server.Response.BookResponse;
 import com.thoughtworks.android.booking.persistence.server.Response.RoomResponse;
-
-import java.util.Timer;
-import java.util.TimerTask;
+import com.thoughtworks.android.booking.ui.Fragment.RoomInformationFragment;
+import com.thoughtworks.android.booking.ui.Fragment.ScanFragment;
 
 import me.zhuao.android.sketch.activity.DrawerLayoutActivity;
 
@@ -25,14 +20,10 @@ public class MainActivity extends DrawerLayoutActivity {
 
     public static RoomResponse roomResponse = new RoomResponse();
     public static BookResponse bookResponse = new BookResponse();
-    private Timer requestTimer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_fragment_layout);
-        new DatabaseOperation().getRoomInformation();
-        requestTimer = new Timer();
-        requestTimer.schedule(timer, 0l, StringConstant.REFRESH_ROOM_INFORMATION_TIME);
         startFragment(new RoomInformationFragment(),"RoomList");
     }
 
@@ -70,19 +61,6 @@ public class MainActivity extends DrawerLayoutActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    private TimerTask timer = new TimerTask(){
-        @Override
-        public void run() {
-           new DatabaseOperation().getBookingInformation();
-        }
-    };
-
-    @Override
-    protected void onStop() {
-        requestTimer.cancel();
-        super.onStop();
     }
 
     @Override

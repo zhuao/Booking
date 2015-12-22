@@ -20,7 +20,8 @@
             Sets the activity's name and label
          -->
         <activity android:name=".ui.MainActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <!--
                     This activity responds to MAIN and LAUNCHER intents
                  -->
