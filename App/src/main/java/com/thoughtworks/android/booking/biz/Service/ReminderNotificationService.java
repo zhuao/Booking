@@ -11,7 +11,7 @@ import android.telephony.TelephonyManager;
 
 import com.thoughtworks.android.booking.biz.DatabaseOperation;
 import com.thoughtworks.android.booking.Model.BookInformation;
-import com.thoughtworks.android.booking.persistence.server.Response.BookResponse;
+import com.thoughtworks.android.booking.persistence.Server.Response.BookResponse;
 
 public class ReminderNotificationService extends IntentService {
 

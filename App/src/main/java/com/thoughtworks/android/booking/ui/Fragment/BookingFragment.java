@@ -140,10 +140,7 @@ public class BookingFragment extends BaseFragment implements com.wdullaer.materi
 
     private boolean isRoomUsingByCheckBookingInformation(String barcode,DateTime bookingStartTime) throws ParseException {
         Boolean isRoomUsing = false;
-        DateTime dateTime = new DateTime(DateTimeZone.forID(StringConstant.TIME_ZONE_OF_CHINA));
         for (BookInformation bookInformation : MainActivity.bookResponse.getResults()) {
-                DateTime startTime = bookInformation.getStartTime();
-                DateTime endTime = bookInformation.getEndTime();
             if (bookInformation.getBarcode().equals(barcode) && bookingStartTime.isBefore(bookInformation.getEndTime()) &&
                     bookingStartTime.isAfter(bookInformation.getStartTime())){
                     isRoomUsing = true;
@@ -157,7 +154,6 @@ public class BookingFragment extends BaseFragment implements com.wdullaer.materi
         }
         return isRoomUsing;
     }
-
     public void bookTheRoom() throws ParseException {
         if(!isRoomUsingByCheckBookingInformation(bundle.getString("barcode"),startTime)){
             bookTheRoomWithSpecificDevice(bundle.getString("barcode"),startTime);
