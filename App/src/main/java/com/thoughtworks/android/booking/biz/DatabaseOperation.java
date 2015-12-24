@@ -67,6 +67,20 @@ public class DatabaseOperation {
         return httpInterface.getBookingData();
     }
 
+    public void getBookingInformationAsynchronious(){
+        httpInterface.getBookingDataAsynchronious(new Callback<BookResponse>() {
+            @Override
+            public void success(BookResponse bookResponse, Response response) {
+                EventBus.getDefault().post(bookResponse);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Log.d(TAG,"Get booking information asynchronious failed");
+            }
+        });
+    }
+
     public void getUserInformation(){
         httpInterface.getUserData(new Callback<UserResponse>() {
             @Override

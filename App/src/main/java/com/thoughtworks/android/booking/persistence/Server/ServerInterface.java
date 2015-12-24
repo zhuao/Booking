@@ -29,6 +29,9 @@ public interface ServerInterface  {
     @GET("/1/classes/Book")
     BookResponse getBookingData();
 
+    @GET("/1/classes/Book")
+    void getBookingDataAsynchronious(Callback<BookResponse> callback);
+
     @DELETE("/1/classes/Book/{param}")
     void deleteSignleBookingInformation(@Path("param")String objectID,Callback<BookResponse> callback);
 

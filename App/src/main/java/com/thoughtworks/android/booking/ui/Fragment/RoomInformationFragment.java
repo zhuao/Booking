@@ -2,11 +2,16 @@ package com.thoughtworks.android.booking.ui.Fragment;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.os.Bundle;
+
+import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -19,22 +24,19 @@ import com.thoughtworks.android.booking.R;
 import com.thoughtworks.android.booking.persistence.Server.Response.BookResponse;
 import com.thoughtworks.android.booking.persistence.Server.Response.RoomResponse;
 
-import java.util.Timer;
-import java.util.TimerTask;
+
 
 import de.greenrobot.event.EventBus;
 
 /**
  * Created by hxxu on 11/29/15.
  */
-public class RoomInformationFragment extends BaseFragment{
+public class RoomInformationFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener{
 
     private View rootView;
     private RecyclerView roomRecyclerView;
     private RoomInformationAdapter roomInformationAdapter;
-
-    private Timer requestTimer;
-
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     public RoomInformationFragment() {
         this.roomInformationAdapter = null;
@@ -68,7 +70,6 @@ public class RoomInformationFragment extends BaseFragment{
 
     @Override
     public void onStop() {
-        requestTimer.cancel();
         EventBus.getDefault().unregister(this);
         super.onStop();
     }
@@ -77,13 +78,12 @@ public class RoomInformationFragment extends BaseFragment{
         hideProgressBar();
         roomInformationAdapter.addRoomResponseToAdapter(bookResponse);
         roomInformationAdapter.notifyDataSetChanged();
-
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     public void onEventMainThread(RoomResponse roomResponse){
        MainActivity.roomResponse = roomResponse;
-       requestTimer = new Timer();
-       requestTimer.schedule(timer, 0l, StringConstant.REFRESH_ROOM_INFORMATION_TIME);
+        new DatabaseOperation().getBookingInformationAsynchronious();
     }
 
     @Override
@@ -96,9 +96,18 @@ public class RoomInformationFragment extends BaseFragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         rootView = inflater.inflate(R.layout.room_information_list_view,container,false);
+
+        swipeRefreshLayout = (SwipeRefreshLayout)rootView.findViewById(R.id.swipe_content);
+        swipeRefreshLayout.setColorSchemeColors(getActivity().getResources().getColor(android.R.color.holo_blue_bright),
+                getActivity().getResources().getColor(android.R.color.holo_green_light),
+                getActivity().getResources().getColor(android.R.color.holo_orange_light),
+                getActivity().getResources().getColor(android.R.color.holo_red_light));
+        swipeRefreshLayout.setOnRefreshListener(this);
+
         roomRecyclerView = (RecyclerView)rootView.findViewById(R.id.room_information_list);
-        roomRecyclerView.setHasFixedSize(true);
+        roomRecyclerView.setHasFixedSize(false);
         roomRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getBaseContext()));
+
         roomInformationAdapter = new RoomInformationAdapter(getActivity());
         roomInformationAdapter.setOnItemClickListener(new RoomInformationAdapter.OnItemClickListener() {
             @Override
@@ -120,14 +129,6 @@ public class RoomInformationFragment extends BaseFragment{
         return rootView;
     }
 
-    private TimerTask timer = new TimerTask(){
-        @Override
-        public void run() {
-            BookResponse bookingInformation = new DatabaseOperation().getBookingInformation();
-            EventBus.getDefault().post(bookingInformation);
-        }
-    };
-
     public void showProgressBar(){
         getActivity().findViewById(R.id.progress_spinner).setVisibility(View.VISIBLE);
     }
@@ -137,4 +138,15 @@ public class RoomInformationFragment extends BaseFragment{
     }
 
 
+    @Override
+    public void onRefresh() {
+        swipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(true);
+                new DatabaseOperation().getBookingInformationAsynchronious();
+            }
+        });
+
+    }
 }
