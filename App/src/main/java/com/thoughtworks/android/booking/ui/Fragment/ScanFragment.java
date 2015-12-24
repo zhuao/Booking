@@ -15,6 +15,7 @@ import com.journeyapps.barcodescanner.BarcodeResult;
 import com.journeyapps.barcodescanner.CompoundBarcodeView;
 import com.thoughtworks.android.booking.StringConstant;
 import com.thoughtworks.android.booking.biz.DatabaseOperation;
+import com.thoughtworks.android.booking.persistence.Server.Response.BookResponse;
 import com.thoughtworks.android.booking.ui.MainActivity;
 import com.thoughtworks.android.booking.Model.BookInformation;
 import com.thoughtworks.android.booking.Model.ParseTime;
@@ -77,10 +78,12 @@ public class ScanFragment extends BaseFragment {
             if (canRoomBeBooked(barcodeResult.toString())){
                 bookTheRoomWithSpecificDevice(barcodeResult.toString());
                 Toast.makeText(context,"Congratulation,you are the owner of this room now!",Toast.LENGTH_SHORT).show();
+                new DatabaseOperation().getBookingInformationAsynchronious();
             }else {
                 TelephonyManager manager= (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
                 if(manager.getDeviceId().equals(deviceIDOfUsingRoom)){
                     new DatabaseOperation().deleteBookingInformationAccordingToTheTime(objecgIDOfUsingRoom);
+                    new DatabaseOperation().getBookingInformationAsynchronious();
                     Toast.makeText(context,"Congratulation,you choose to leave this room success",Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(context,"Sorry, you can not cancel this room since you are not the owner",Toast.LENGTH_SHORT).show();
@@ -129,8 +132,6 @@ public class ScanFragment extends BaseFragment {
 
         for (BookInformation bookInformation : MainActivity.bookResponse.getResults()
                 ) {
-            DateTime startTime = bookInformation.getStartTime();
-            DateTime endTime = bookInformation.getEndTime();
             if(bookInformation.getBarcode().equals(barcode) &&
                     currentTime.isBefore(bookInformation.getEndTime()) &&
                     currentTime.isAfter(bookInformation.getStartTime())){
@@ -180,4 +181,7 @@ public class ScanFragment extends BaseFragment {
         return true;
     }
 
+    public void onEventMainThread(BookResponse bookResponse){
+         MainActivity.bookResponse = bookResponse;
+    }
 }
