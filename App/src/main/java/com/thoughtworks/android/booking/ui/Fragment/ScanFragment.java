@@ -78,18 +78,16 @@ public class ScanFragment extends BaseFragment {
             if (canRoomBeBooked(barcodeResult.toString())){
                 bookTheRoomWithSpecificDevice(barcodeResult.toString());
                 Toast.makeText(context,"Congratulation,you are the owner of this room now!",Toast.LENGTH_SHORT).show();
-                new DatabaseOperation().getBookingInformationAsynchronious();
             }else {
                 TelephonyManager manager= (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
                 if(manager.getDeviceId().equals(deviceIDOfUsingRoom)){
                     new DatabaseOperation().deleteBookingInformationAccordingToTheTime(objecgIDOfUsingRoom);
-                    new DatabaseOperation().getBookingInformationAsynchronious();
-                    Toast.makeText(context,"Congratulation,you choose to leave this room success",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,"Leaving the room success",Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(context,"Sorry, you can not cancel this room since you are not the owner",Toast.LENGTH_SHORT).show();
+                    compoundBarcodeView.resume();
                 }
             }
-            compoundBarcodeView.resume();
         }
 
         @Override
@@ -128,18 +126,25 @@ public class ScanFragment extends BaseFragment {
     }
 
     private boolean isRoomUsingByCheckBookingInformation(String barcode) throws ParseException {
+        Boolean isRoomUsing = false;
         DateTime currentTime = new DateTime(DateTimeZone.forID(StringConstant.TIME_ZONE_OF_CHINA));
 
         for (BookInformation bookInformation : MainActivity.bookResponse.getResults()
                 ) {
-            if(bookInformation.getBarcode().equals(barcode) &&
-                    currentTime.isBefore(bookInformation.getEndTime()) &&
-                    currentTime.isAfter(bookInformation.getStartTime())){
-                return true;
+            if(bookInformation.getBarcode().equals(barcode)){
+                if(currentTime.isBefore(bookInformation.getEndTime()) &&
+                        currentTime.isAfter(bookInformation.getStartTime())){
+                    isRoomUsing = true;
+                    break;
+                }
+                if (currentTime.equals(bookInformation.getStartTime()) || currentTime.equals(bookInformation.getEndTime())){
+                    isRoomUsing = true;
+                    break;
+                }
             }
 
         }
-        return false;
+       return isRoomUsing;
     }
 
     private void bookTheRoomWithSpecificDevice(String barcode){
@@ -163,6 +168,7 @@ public class ScanFragment extends BaseFragment {
     }
 
     private boolean canRoomBeBooked(String barcode){
+        Boolean canRoomBooked = true;
         for (BookInformation bookInformation : MainActivity.bookResponse.getResults()) {
             String barcodeOfRoom = bookInformation.getBarcode();
             if(barcode.equals(barcodeOfRoom)){
@@ -170,7 +176,8 @@ public class ScanFragment extends BaseFragment {
                     if(isRoomUsingByCheckBookingInformation(barcodeOfRoom)){
                         deviceIDOfUsingRoom = bookInformation.getDeviceId();
                         objecgIDOfUsingRoom = bookInformation.getObjectId();
-                          return false;
+                        canRoomBooked = false;
+                        break;
                     }
                 } catch (ParseException e) {
                     e.printStackTrace();
@@ -178,10 +185,6 @@ public class ScanFragment extends BaseFragment {
 
             }
         }
-        return true;
-    }
-
-    public void onEventMainThread(BookResponse bookResponse){
-         MainActivity.bookResponse = bookResponse;
+        return canRoomBooked;
     }
 }

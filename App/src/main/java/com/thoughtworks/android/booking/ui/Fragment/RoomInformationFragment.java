@@ -84,11 +84,14 @@ public class RoomInformationFragment extends BaseFragment implements SwipeRefres
     public void onEventMainThread(RoomResponse roomResponse){
        MainActivity.roomResponse = roomResponse;
         new DatabaseOperation().getBookingInformationAsynchronious();
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        new DatabaseOperation().getBookingInformationAsynchronious();
+
     }
 
     @Nullable
