@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.thoughtworks.android.booking.Model.BookInformation;
 import com.thoughtworks.android.booking.Model.RoomInformation;
 import com.thoughtworks.android.booking.R;
+import com.thoughtworks.android.booking.persistence.Server.Response.BookResponse;
 import com.thoughtworks.android.booking.ui.MainActivity;
 
 import java.util.ArrayList;
@@ -61,5 +62,10 @@ public class BookingRecordAdapter extends BaseAdapter {
             }
         }
         return null;
+    }
+
+    public void updateTheDate(ArrayList<BookInformation> bookInformations){
+        bookInformationsRecord = bookInformations;
+        notifyDataSetChanged();
     }
 }

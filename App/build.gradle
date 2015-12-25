@@ -24,7 +24,7 @@ dependencies {
 
 android {
     compileSdkVersion appTargetSDKVersion
-    buildToolsVersion '19.1.0'
+    buildToolsVersion appBuildToolVersion
 
     defaultConfig {
         minSdkVersion appMinSDKVersion

@@ -3,14 +3,17 @@ package com.thoughtworks.android.booking.ui;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.thoughtworks.android.booking.R;
 import com.thoughtworks.android.booking.persistence.Server.Response.BookResponse;
 import com.thoughtworks.android.booking.persistence.Server.Response.RoomResponse;
+import com.thoughtworks.android.booking.ui.Fragment.CheckBookingRecord;
 import com.thoughtworks.android.booking.ui.Fragment.RoomInformationFragment;
 import com.thoughtworks.android.booking.ui.Fragment.ScanFragment;
 
@@ -20,11 +23,15 @@ public class MainActivity extends DrawerLayoutActivity {
 
     public static RoomResponse roomResponse = new RoomResponse();
     public static BookResponse bookResponse = new BookResponse();
+    private NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_fragment_layout);
-        startFragment(new RoomInformationFragment(),"RoomList");
+        startFragment(new RoomInformationFragment(), "RoomList");
+        navigationView = (NavigationView)findViewById(R.id.navigation_main);
+        navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -34,7 +41,10 @@ public class MainActivity extends DrawerLayoutActivity {
 
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
-        return false;
+        if(menuItem.getItemId() == R.id.navigation_spinner){
+            startFragment(new CheckBookingRecord(this),CheckBookingRecord.class.getName());
+        }
+       return super.onOptionsItemSelected(menuItem);
     }
 
     public void startFragment(Fragment fragment,String tag){

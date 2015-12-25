@@ -3,4 +3,8 @@
     <string name="app_name">Booking</string>
     <string name="booking_text">请选择房间预订时间</string>
     <string name="booking_button_text">确定预订</string>
+    <string name="alert_for_delete_booking_room">你确定要删除该次预定么？</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="check_my_booking_record">查看我的预定</string>
 </resources>
