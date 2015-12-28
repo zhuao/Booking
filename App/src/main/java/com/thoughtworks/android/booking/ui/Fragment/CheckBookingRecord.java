@@ -92,19 +92,6 @@ public class CheckBookingRecord extends Fragment {
         return userBookingRecord;
     }
 
-//    private int findThePositionOfDeletBookInformtiaon(String objectId){
-//        int iteration = 0;
-//        for (BookInformation bookInformation : MainActivity.bookResponse.getResults()) {
-//            if(bookInformation.getObjectId().equals(objectId))
-//            {
-//                break;
-//            }
-//            iteration++;
-//        }
-//        return iteration;
-//    }
-
-
 //    public void onEventMainThread(BookResponse bookResponse){
 //       recordAdapter.updateTheDate(bookResponse);
 //    }

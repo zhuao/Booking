@@ -81,7 +81,7 @@ public class MainActivity extends DrawerLayoutActivity {
         switch (item.getItemId())
         {
             case R.id.barcode_scan:
-                startFragment(new ScanFragment(this),"Scan");
+                startFragment(new ScanFragment(this),ScanFragment.class.getSimpleName());
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

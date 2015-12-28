@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -51,6 +52,7 @@ public class RoomInformationFragment extends BaseFragment implements SwipeRefres
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         new DatabaseOperation().getRoomInformation();
+
     }
 
     @Override
@@ -96,7 +98,7 @@ public class RoomInformationFragment extends BaseFragment implements SwipeRefres
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
 
         rootView = inflater.inflate(R.layout.room_information_list_view,container,false);
 
@@ -110,7 +112,6 @@ public class RoomInformationFragment extends BaseFragment implements SwipeRefres
         roomRecyclerView = (RecyclerView)rootView.findViewById(R.id.room_information_list);
         roomRecyclerView.setHasFixedSize(false);
         roomRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getBaseContext()));
-
         roomInformationAdapter = new RoomInformationAdapter(getActivity());
         roomInformationAdapter.setOnItemClickListener(new RoomInformationAdapter.OnItemClickListener() {
             @Override
