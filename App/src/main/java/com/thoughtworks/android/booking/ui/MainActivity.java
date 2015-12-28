@@ -1,9 +1,11 @@
 package com.thoughtworks.android.booking.ui;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.thoughtworks.android.booking.R;
+import com.thoughtworks.android.booking.StringConstant;
 import com.thoughtworks.android.booking.persistence.Server.Response.BookResponse;
 import com.thoughtworks.android.booking.persistence.Server.Response.RoomResponse;
 import com.thoughtworks.android.booking.ui.Fragment.CheckBookingRecord;
@@ -18,19 +21,23 @@ import com.thoughtworks.android.booking.ui.Fragment.RoomInformationFragment;
 import com.thoughtworks.android.booking.ui.Fragment.ScanFragment;
 
 import me.zhuao.android.sketch.activity.DrawerLayoutActivity;
+import me.zhuao.android.sketch.activity.ToolbarActivity;
 
 public class MainActivity extends DrawerLayoutActivity {
 
     public static RoomResponse roomResponse = new RoomResponse();
     public static BookResponse bookResponse = new BookResponse();
     private NavigationView navigationView;
+    private DrawerLayout drawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_fragment_layout);
-        startFragment(new RoomInformationFragment(), "RoomList");
+        startFragment(new RoomInformationFragment(), MainActivity.class.getSimpleName());
         navigationView = (NavigationView)findViewById(R.id.navigation_main);
         navigationView.setNavigationItemSelectedListener(this);
+        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
 
     }
 
@@ -42,16 +49,24 @@ public class MainActivity extends DrawerLayoutActivity {
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
         if(menuItem.getItemId() == R.id.navigation_spinner){
-            startFragment(new CheckBookingRecord(this),CheckBookingRecord.class.getName());
+            startFragment(new CheckBookingRecord(this), CheckBookingRecord.class.getSimpleName());
         }
+        drawerLayout.closeDrawers();
        return super.onOptionsItemSelected(menuItem);
     }
 
     public void startFragment(Fragment fragment,String tag){
-        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.main_fragment_content, fragment);
-        fragmentTransaction.addToBackStack(tag);
-        fragmentTransaction.commit();
+         if(getFragmentManager().findFragmentByTag(tag) == null){
+
+             FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+             fragmentTransaction.replace(R.id.main_fragment_content, fragment,tag);
+             fragmentTransaction.addToBackStack(tag);
+             fragmentTransaction.commit();
+         }else {
+
+             getFragmentManager().popBackStackImmediate(tag, 0);
+         }
+
     }
 
     @Override
