@@ -15,6 +15,7 @@ import android.widget.ListView;
 
 import com.thoughtworks.android.booking.Model.BookInformation;
 import com.thoughtworks.android.booking.R;
+import com.thoughtworks.android.booking.StringConstant;
 import com.thoughtworks.android.booking.biz.DatabaseOperation;
 import com.thoughtworks.android.booking.persistence.Server.Response.BookResponse;
 import com.thoughtworks.android.booking.ui.Adapter.BookingRecordAdapter;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
 /**
  * Created by hxxu on 12/24/15.
  */
-public class CheckBookingRecord extends Fragment {
+public class CheckBookingRecord extends BaseFragment {
     private View rootView;
     private ListView listView;
     private Context context;
@@ -39,6 +40,11 @@ public class CheckBookingRecord extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         userBookingRecord = findOutAllTheBookingRecordForUser(MainActivity.bookResponse);
+    }
+
+    @Override
+    protected String getFragmentTitle() {
+        return StringConstant.BOOKING_RECORD_LIST_OF_USER;
     }
 
     @Override
@@ -92,8 +98,5 @@ public class CheckBookingRecord extends Fragment {
         return userBookingRecord;
     }
 
-//    public void onEventMainThread(BookResponse bookResponse){
-//       recordAdapter.updateTheDate(bookResponse);
-//    }
 
 }

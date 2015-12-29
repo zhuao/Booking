@@ -15,7 +15,7 @@ import com.thoughtworks.android.booking.persistence.Server.Response.RoomResponse
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
-
+import de.greenrobot.event.EventBus;
 
 
 /**
@@ -27,19 +27,26 @@ public class SplashScreenActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen_layout);
-//        new DatabaseOperation().getRoomInformation();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent mainActivityIntent = new Intent(SplashScreenActivity.this,MainActivity.class);
-                startActivity(mainActivityIntent);
-                finish();
-            }
-        },SPLASH_TIME_OUT);
+
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+        new DatabaseOperation().getRoomInformation();
+        new DatabaseOperation().getBookingInformationAsynchronious();
+    }
+
+    @Override
+    protected void onStop() {
+        EventBus.getDefault().unregister(this);
+        super.onStop();
     }
 
     public void onEventMainThread(BookResponse bookResponse){
-       MainActivity.bookResponse = bookResponse;
+        MainActivity.bookResponse = bookResponse;
         deleteTheOldBookingInformation();
         Intent mainActivityIntent = new Intent(this,MainActivity.class);
         startActivity(mainActivityIntent);
@@ -48,8 +55,6 @@ public class SplashScreenActivity extends Activity {
 
     public void onEventMainThread(RoomResponse roomResponse){
         MainActivity.roomResponse = roomResponse;
-        new DatabaseOperation().getBookingInformationAsynchronious();
-
     }
 
     public void deleteTheOldBookingInformation(){

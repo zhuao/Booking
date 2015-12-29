@@ -51,8 +51,6 @@ public class RoomInformationFragment extends BaseFragment implements SwipeRefres
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new DatabaseOperation().getRoomInformation();
-
     }
 
     @Override
@@ -81,12 +79,6 @@ public class RoomInformationFragment extends BaseFragment implements SwipeRefres
         roomInformationAdapter.addRoomResponseToAdapter(bookResponse);
         roomInformationAdapter.notifyDataSetChanged();
         swipeRefreshLayout.setRefreshing(false);
-    }
-
-    public void onEventMainThread(RoomResponse roomResponse){
-       MainActivity.roomResponse = roomResponse;
-        new DatabaseOperation().getBookingInformationAsynchronious();
-
     }
 
     @Override
