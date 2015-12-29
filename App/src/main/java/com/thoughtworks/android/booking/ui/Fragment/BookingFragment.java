@@ -88,18 +88,18 @@ public class BookingFragment extends BaseFragment implements com.wdullaer.materi
 
     @Override
     public void onDateSet(DatePickerDialog datePickerDialog, int i, int i1, int i2) {
-        startTime.withYear(i);
-        startTime.withMonthOfYear(i1);
-        startTime.withDayOfYear(i2);
+        startTime = startTime.withYear(i);
+        startTime = startTime.withMonthOfYear(i1);
+        startTime = startTime.withDayOfYear(i2);
         startTimeDialog();
 
     }
 
     @Override
     public void onTimeSet(RadialPickerLayout radialPickerLayout, int i, int i1, int i2) {
-        startTime.withHourOfDay(i);
-        startTime.withMinuteOfHour(i1);
-        startTime.withSecondOfMinute(i2);
+        startTime = startTime.withHourOfDay(i);
+        startTime = startTime.withMinuteOfHour(i1);
+        startTime = startTime.withSecondOfMinute(i2);
         TextView textView = (TextView)getActivity().findViewById(R.id.time_text);
         textView.setText("您预订的房间时间为：" + startTime.toString());
         Button bookButton = (Button)getActivity().findViewById(R.id.booking_room_button);

@@ -72,10 +72,12 @@ public class CheckBookingRecord extends BaseFragment {
                 }).setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        String deletObjectId = userBookingRecord.get(position).getObjectId();
-                        userBookingRecord.remove(position);
-                        recordAdapter.updateTheDate(userBookingRecord);
-                        new DatabaseOperation().deleteBookingInformationAccordingToTheTime(deletObjectId);
+                        if (userBookingRecord.size() != 0 ){
+                            String deletObjectId = userBookingRecord.get(position).getObjectId();
+                            userBookingRecord.remove(position);
+                            recordAdapter.updateTheDate(userBookingRecord);
+                            new DatabaseOperation().deleteBookingInformationAccordingToTheTime(deletObjectId);
+                        }
                     }
                 });
 
