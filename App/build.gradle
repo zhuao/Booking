@@ -40,11 +40,31 @@ android {
         }
     }
 
+    productFlavors{
+        dev{
+            applicationId = "com.thoughtworks.android.booking"
+        }
+
+        production{
+            applicationId = "com.thoughtworks.android.booking"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
+        }
+
+        applicationVariants.all { variant ->
+            variant.outputs.each { output ->
+                def file = output.outputFile
+                def variantName = "${variant.flavorName}-${variant.buildType.name.toLowerCase()}";
+                def newName = "Thoughtworks-Booking-${variantName}.apk";
+                output.outputFile = new File(file.parent,newName);
+            }
+
         }
     }
 
