@@ -89,8 +89,8 @@ public class BookingFragment extends BaseFragment implements com.wdullaer.materi
     @Override
     public void onDateSet(DatePickerDialog datePickerDialog, int i, int i1, int i2) {
         startTime = startTime.withYear(i);
-        startTime = startTime.withMonthOfYear(i1);
-        startTime = startTime.withDayOfYear(i2);
+        startTime = startTime.withMonthOfYear(i1+1);
+        startTime = startTime.withDayOfMonth(i2);
         startTimeDialog();
 
     }

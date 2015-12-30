@@ -83,20 +83,25 @@ public class RoomInformationAdapter extends RecyclerView.Adapter<RoomInformation
     }
 
     private boolean isRoomUsingByCheckBookingInformation(String barcode) throws ParseException {
-       DateTime currentTime = new DateTime(DateTimeZone.forID(StringConstant.TIME_ZONE_OF_CHINA));
-
-        for (BookInformation bookInformation : MainActivity.bookResponse.getResults()
-                ) {
-            DateTime startTime = bookInformation.getStartTime();
-            DateTime endTime = bookInformation.getEndTime();
-            if(bookInformation.getBarcode().equals(barcode) &&
-                    currentTime.isBefore(bookInformation.getEndTime()) &&
-                    currentTime.isAfter(bookInformation.getStartTime())){
-                return true;
+        DateTime currentTime = new DateTime(DateTimeZone.forID(StringConstant.TIME_ZONE_OF_CHINA));
+        Boolean isRoomUsing = false;
+        for (BookInformation bookInformation : MainActivity.bookResponse.getResults()) {
+            DateTime temp1 = bookInformation.getEndTime();
+            DateTime temp2 = bookInformation.getStartTime();
+            if(bookInformation.getBarcode().equals(barcode)){
+                if(currentTime.isBefore(bookInformation.getEndTime()) &&
+                        currentTime.isAfter(bookInformation.getStartTime())){
+                    isRoomUsing = true;
+                    break;
+                }
+                if (currentTime.equals(bookInformation.getStartTime()) || currentTime.equals(bookInformation.getEndTime())){
+                    isRoomUsing = true;
+                    break;
+                }
             }
 
         }
-        return false;
+        return isRoomUsing;
     }
 
 
