@@ -1,6 +1,7 @@
 package com.thoughtworks.android.booking.ui.Fragment;
 
 
+import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -158,6 +159,7 @@ public class BookingFragment extends BaseFragment implements com.wdullaer.materi
         if(!isRoomUsingByCheckBookingInformation(bundle.getString("barcode"),startTime)){
             bookTheRoomWithSpecificDevice(bundle.getString("barcode"),startTime);
             Toast.makeText(context,"Booking room success,thank you!",Toast.LENGTH_SHORT).show();
+            getFragmentManager().popBackStackImmediate(MainActivity.class.getSimpleName(),0);
         }else {
             Toast.makeText(context,"Sorry,the room at this time is using, please choose another one",Toast.LENGTH_SHORT).show();
         }

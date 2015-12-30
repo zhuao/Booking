@@ -28,7 +28,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="150dp"
+        android:layout_gravity="right"
         android:paddingTop="280dp">
         <TextView
             android:layout_width="wrap_content"
