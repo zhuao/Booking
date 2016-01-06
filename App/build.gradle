@@ -18,7 +18,8 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
     testCompile 'org.robolectric:robolectric:3.0-rc3'
-    compile files('src/main/java/com/thoughtworks/android/booking/libs/jpush-android-2.0.5.jar')
+    compile files('libs/jmessage-android-1.1.5.jar')
+    compile files('src/main/libs/jmessage-android-1.1.5.jar')
 }
 
 android {
@@ -39,6 +40,11 @@ android {
         }
     }
 
+    sourceSets{
+        main{
+            jniLibs.srcDir 'src/main/libs'
+        }
+    }
     productFlavors{
         dev{
             applicationId = "com.thoughtworks.android.booking"

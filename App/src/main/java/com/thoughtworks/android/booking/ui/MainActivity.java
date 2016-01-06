@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
@@ -20,6 +21,10 @@ import com.thoughtworks.android.booking.ui.Fragment.CheckBookingRecord;
 import com.thoughtworks.android.booking.ui.Fragment.RoomInformationFragment;
 import com.thoughtworks.android.booking.ui.Fragment.ScanFragment;
 
+
+import cn.jpush.android.api.JPushInterface;
+import cn.jpush.im.android.api.JMessageClient;
+import cn.jpush.im.android.api.model.Message;
 import me.zhuao.android.sketch.activity.DrawerLayoutActivity;
 import me.zhuao.android.sketch.activity.ToolbarActivity;
 
@@ -38,6 +43,11 @@ public class MainActivity extends DrawerLayoutActivity {
         navigationView = (NavigationView)findViewById(R.id.navigation_main);
         navigationView.setNavigationItemSelectedListener(this);
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        JPushInterface.init(getApplicationContext());
+        JMessageClient.init(getApplicationContext());
+
+//        Message message = JMessageClient.createSingleTextMessage("1", "1");
+//        JMessageClient.sendMessage(message);
 
     }
 
