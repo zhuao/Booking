@@ -7,6 +7,20 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <uses-permission android:name="android.permission.CAMERA"></uses-permission>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <permission android:name="com.thoughtworks.android.booking.permission.JPUSH_MESSAGE" android:protectionLevel="signature" />
+
+    <!-- Required -->
+    <uses-permission android:name="com.thoughtworks.android.booking.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
     <uses-feature android:name="android.hardware.Camera"
         android:required="true"/>
@@ -39,8 +53,6 @@
 
         <service android:name=".biz.Service.ReminderNotificationService"
             android:stopWithTask="true"/>
-
-
     </application>
 
 </manifest>
