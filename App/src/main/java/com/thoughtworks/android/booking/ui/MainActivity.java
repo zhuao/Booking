@@ -3,6 +3,7 @@ package com.thoughtworks.android.booking.ui;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import android.support.design.widget.NavigationView;
@@ -20,11 +21,13 @@ import com.thoughtworks.android.booking.persistence.Server.Response.RoomResponse
 import com.thoughtworks.android.booking.ui.Fragment.CheckBookingRecord;
 import com.thoughtworks.android.booking.ui.Fragment.RoomInformationFragment;
 import com.thoughtworks.android.booking.ui.Fragment.ScanFragment;
+import com.thoughtworks.android.booking.ui.View.RoundImageView;
 
 
 import cn.jpush.android.api.JPushInterface;
 import cn.jpush.im.android.api.JMessageClient;
 import cn.jpush.im.android.api.model.Message;
+import de.hdodenhof.circleimageview.CircleImageView;
 import me.zhuao.android.sketch.activity.DrawerLayoutActivity;
 import me.zhuao.android.sketch.activity.ToolbarActivity;
 
@@ -42,8 +45,12 @@ public class MainActivity extends DrawerLayoutActivity {
         startFragment(new RoomInformationFragment(), MainActivity.class.getSimpleName());
         navigationView = (NavigationView)findViewById(R.id.navigation_main);
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.addHeaderView(View.inflate(this,R.layout.navigation_header_layout,null));
+        navigationView.addHeaderView(View.inflate(this, R.layout.navigation_header_layout, null));
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+
+        CircleImageView circleImageView = (CircleImageView)findViewById(R.id.navigation_user_circle_image);
+        circleImageView.setBorderColor(getResources().getColor(R.color.gray_500));
+        circleImageView.setImageDrawable(getResources().getDrawable(R.drawable.hao));
         JPushInterface.setDebugMode(true);
         JPushInterface.init(getApplicationContext());
         JMessageClient.init(getApplicationContext());
