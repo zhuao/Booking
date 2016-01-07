@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:checkableBehavior="single" >
 
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/user_login" android:title="@string/user_login"/>
+    </group>
+
+    <group android:checkableBehavior="single" >
         <item android:id="@+id/navigation_spinner"
             android:title="@string/check_my_booking_record" />
     </group>
+
 </menu>

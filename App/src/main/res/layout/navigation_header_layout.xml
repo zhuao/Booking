@@ -5,12 +5,12 @@
 
     <ImageView
        android:layout_width="match_parent"
-       android:layout_height="200dp"
-       android:background="@drawable/navigation_header" />
+       android:layout_height="200dp"/>
+       <!--android:background="@drawable/navigation_header" />-->
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:id="@+id/navigation_user_circle_image"
         android:layout_gravity="center"/>
 

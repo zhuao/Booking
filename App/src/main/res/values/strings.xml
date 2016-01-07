@@ -7,6 +7,7 @@
     <string name="yes">是</string>
     <string name="no">否</string>
     <string name="check_my_booking_record">查看我的预定</string>
+    <string name="user_login">用户登录</string>
     <string name="splash_screen_title_booking">Booking</string>
     <string name="splash_screen_title_room">+Room</string>
     <string name="thought_works">ThoughtWorks</string>
