@@ -14,8 +14,8 @@ import cn.jpush.android.api.JPushInterface;
 /**
  * Created by hxxu on 1/6/16.
  */
-public class PushNotificationService extends BroadcastReceiver {
-    private static final String TAG = PushNotificationService.class.getSimpleName();
+public class PushNotificationReceiver extends BroadcastReceiver {
+    private static final String TAG = PushNotificationReceiver.class.getSimpleName();
     private NotificationManager notificationManager;
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -27,13 +27,14 @@ public class PushNotificationService extends BroadcastReceiver {
 
         } else if (JPushInterface.ACTION_MESSAGE_RECEIVED.equals(intent.getAction())) {
             Log.d(TAG, "接受到推送下来的自定义消息");
+            Bundle bundle = intent.getExtras();
+            Toast.makeText(context,bundle.getString(JPushInterface.EXTRA_ALERT),Toast.LENGTH_SHORT).show();
 
         } else if (JPushInterface.ACTION_NOTIFICATION_RECEIVED.equals(intent.getAction())) {
             Log.d(TAG, "接受到推送下来的通知");
 
             Bundle bundle = intent.getExtras();
-            Log.d(TAG,bundle.getString(JPushInterface.EXTRA_MESSAGE));
-            Toast.makeText(context,bundle.getString(JPushInterface.EXTRA_MESSAGE),Toast.LENGTH_SHORT).show();
+            Toast.makeText(context,bundle.getString(JPushInterface.EXTRA_ALERT),Toast.LENGTH_SHORT).show();
         } else if (JPushInterface.ACTION_NOTIFICATION_OPENED.equals(intent.getAction())) {
             Log.d(TAG, "用户点击打开了通知");
         } else {

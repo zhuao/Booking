@@ -42,7 +42,9 @@ public class MainActivity extends DrawerLayoutActivity {
         startFragment(new RoomInformationFragment(), MainActivity.class.getSimpleName());
         navigationView = (NavigationView)findViewById(R.id.navigation_main);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.addHeaderView(View.inflate(this,R.layout.navigation_header_layout,null));
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        JPushInterface.setDebugMode(true);
         JPushInterface.init(getApplicationContext());
         JMessageClient.init(getApplicationContext());
 

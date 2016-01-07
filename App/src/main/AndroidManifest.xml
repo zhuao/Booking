@@ -135,7 +135,7 @@
 
 
         <receiver
-            android:name=".biz.Service.PushNotificationService"
+            android:name=".biz.Service.PushNotificationReceiver"
             android:enabled="true">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.REGISTRATION" />
